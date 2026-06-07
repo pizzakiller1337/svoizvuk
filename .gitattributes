@@ -1,0 +1,26 @@
+# По умолчанию: Git сам определяет текстовые файлы и нормализует их к LF в репозитории
+* text=auto
+# Код и текст — храним и выдаём как LF (важно: сайт крутится на Linux-сервере)
+*.php   text eol=lf
+*.css   text eol=lf
+*.js    text eol=lf
+*.html  text eol=lf
+*.sql   text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.svg   text eol=lf
+*.webmanifest text eol=lf
+# Бинарные файлы — Git НЕ должен трогать в них окончания строк
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.webp binary
+*.mp3  binary
+*.wav  binary
+*.flac binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+assets/audio/** filter=lfs diff=lfs merge=lfs -text

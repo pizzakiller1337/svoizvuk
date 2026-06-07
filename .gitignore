@@ -1,0 +1,20 @@
+# Секреты / локальная конфигурация
+db.config.php
+*.local.php
+.env
+
+# Системное
+.DS_Store
+Thumbs.db
+
+# Логи и кэш
+*.log
+/tmp/
+
+# Зависимости, если появятся
+/vendor/
+/node_modules/
+
+# Аудио держим в Git LFS (см. шаг 2), либо раскомментируйте,
+# чтобы не коммитить вовсе:
+# assets/audio/"assets/audio/" 
