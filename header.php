@@ -2,6 +2,10 @@
 $cart_count = array_sum($_SESSION['cart'] ?? []);
 $is_logged_in = isset($_SESSION['user_id']);
 $username = $_SESSION['username'] ?? '';
+// h1 — только на главной; на внутренних страницах свой h1 (page-title),
+// двух h1 на странице быть не должно
+$is_home_page = basename($_SERVER['SCRIPT_NAME']) === 'index.php';
+$site_title_tag = $is_home_page ? 'h1' : 'p';
 ?>
 
 <div class="top-bar">
@@ -35,7 +39,7 @@ $username = $_SESSION['username'] ?? '';
     <div class="container header-inner">
         <a href="index.php" class="logo-link">
             <img src="assets/logo/logo.png?v=2" alt="Свой звук" class="logo-icon">
-            <h1 class="site-title">Свой звук</h1>
+            <<?= $site_title_tag ?> class="site-title">Свой звук</<?= $site_title_tag ?>>
         </a>
     </div>
 </header>

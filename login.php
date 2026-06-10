@@ -71,20 +71,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 <?php require 'header.php'; ?>
 <main>
     <section class="auth-section">
         <div class="auth-form-side">
-            <h1 class="auth-title">Вход</h1>
+            <h1 class="page-title">Вход</h1>
 
             <?php if (!empty($error_message)): ?>
-                <div class="message error"><?= htmlspecialchars($error_message) ?></div>
+                <div class="alert alert-error"><?= htmlspecialchars($error_message) ?></div>
             <?php endif; ?>
             <?php if (!empty($success_message)): ?>
-                <div class="message success"><?= htmlspecialchars($success_message) ?></div>
+                <div class="alert alert-success"><?= htmlspecialchars($success_message) ?></div>
             <?php endif; ?>
 
             <form method="POST" action="login.php" class="auth-form">
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="password" class="form-label">Пароль</label>
                     <input type="password" id="password" name="password" class="form-input" required>
                 </div>
-                <button type="submit" class="btn-login">Войти</button>
+                <button type="submit" class="btn btn-primary btn-login">Войти</button>
             </form>
 
             <p class="auth-switch">

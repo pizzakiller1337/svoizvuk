@@ -168,14 +168,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 <?php require 'header.php'; ?>
 
 <main class="checkout-page">
     <div class="container">
-        <h2 class="section-title">Оплата заказа</h2>
+        <h1 class="page-title">Оплата заказа</h1>
 
         <ol class="checkout-steps">
             <li class="done"><span>1</span>Данные</li>
@@ -184,7 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </ol>
 
         <?php if ($payment_error): ?>
-            <div class="message error"><?= htmlspecialchars($payment_error) ?></div>
+            <div class="alert alert-error"><?= htmlspecialchars($payment_error) ?></div>
         <?php endif; ?>
 
         <form method="POST" action="payment.php" class="checkout-form" id="payment-form" novalidate>
@@ -330,7 +330,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php endif; ?>
                         </div>
 
-                        <button type="submit" class="btn-checkout summary-btn" id="pay-btn">
+                        <button type="submit" class="btn btn-primary btn-checkout summary-btn" id="pay-btn">
                             Оплатить <?= number_format($grand_total, 0, '', ' ') ?> ₽
                         </button>
                         <a href="checkout.php" class="summary-back">← Изменить данные</a>

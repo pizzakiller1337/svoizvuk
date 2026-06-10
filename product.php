@@ -39,7 +39,7 @@ $tracks = mysqli_fetch_all(mysqli_stmt_get_result($stmt_tracks), MYSQLI_ASSOC);
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 <?php require 'header.php'; ?>
@@ -90,7 +90,7 @@ $tracks = mysqli_fetch_all(mysqli_stmt_get_result($stmt_tracks), MYSQLI_ASSOC);
 
                     <form method="post" action="add_to_cart.php" class="add-to-cart-form">
                         <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
-                        <button type="submit" class="btn-buy" name="add_to_cart">
+                        <button type="submit" class="btn btn-primary btn-buy" name="add_to_cart">
                             <span>В корзину</span>
                         </button>
                     </form>

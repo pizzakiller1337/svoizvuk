@@ -2062,25 +2062,9 @@ a.contact-value:hover {
 /* ============================================================
    СООБЩЕНИЯ
    ============================================================ */
-.message {
-  padding: 12px;
-  border-radius: var(--radius-sm);
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: 600;
-}
-
-.error {
-  background: var(--error-bg);
-  color: var(--error-text);
-  border: 1px solid var(--error-border);
-}
-
-.success {
-  background: var(--success-bg);
-  color: var(--success-text);
-  border: 1px solid var(--success-border);
-}
+/* Нотификации форм: единый компонент .alert / .alert-error /
+   .alert-success — см. секцию «КОМПОНЕНТЫ» в конце файла.
+   Старая система .message/.error/.success удалена (этап 3). */
 
 
 /* ============================================================
@@ -4315,4 +4299,145 @@ body > .container,
   position: absolute;
   inset: -7px;          /* 32px + 7px*2 = 46px зона касания */
   border-radius: 50%;
+}
+
+
+/* ============================================================
+   КОМПОНЕНТЫ (этап 3) — канонические классы.
+   Кнопки: .btn + модификатор роли (.btn-primary / .btn-secondary /
+   .btn-danger) + размер (.btn-sm) + ширина (.btn-block).
+   Легаси-классы (btn-buy, btn-checkout, summary-btn, btn-login…)
+   остаются в разметке только ради геометрии (ширина/отступы)
+   и будут удалены на этапе чистки.
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  min-height: 44px;                 /* тач-таргет */
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* PRIMARY — белая заливка + пробегающий блик */
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-inverse);
+  border: 1px solid var(--accent);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%, rgba(0, 0, 0, 0.1) 50%, transparent 100%);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+
+.btn-primary:hover::after {
+  left: 100%;
+}
+
+/* SECONDARY — плоская полупрозрачная */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-white);
+  border: 1px solid var(--border-light);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+
+/* DANGER — удаление и необратимые действия */
+.btn-danger {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid var(--danger-border);
+}
+
+.btn-danger:hover {
+  background: var(--danger-bg-strong);
+  border-color: var(--danger-border-strong);
+  color: var(--danger-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-danger);
+}
+
+/* Размер и ширина */
+.btn-sm {
+  padding: 9px 16px;
+  min-height: 36px;
+  font-size: 0.85rem;
+}
+
+.btn-block {
+  display: flex;
+  width: 100%;
+}
+
+/* ---------- Алерты: единая система нотификаций ---------- */
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.alert-error {
+  background: var(--danger-bg);
+  color: var(--danger);
+  border: 1px solid var(--danger-border);
+}
+
+.alert-success {
+  background: var(--success-bg);
+  color: var(--success);
+  border: 1px solid var(--success-border);
+}
+
+/* ---------- Заголовок страницы: один стиль на весь сайт ---------- */
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-white);
+  letter-spacing: -0.015em;
+  margin: 0 0 32px;
+}
+
+@media (max-width: 600px) {
+  .page-title { font-size: 1.6rem; margin-bottom: 24px; }
 }
