@@ -35,12 +35,7 @@ $username = $_SESSION['username'] ?? '';
     <div class="container header-inner">
         <a href="index.php" class="logo-link">
             <img src="assets/logo/logo.png" alt="Свой звук" class="logo-icon">
-            <div class="logo-text">
-                <h1 class="site-title">
-                    Свой звук
-                </h1>
-                <p class="site-subtitle">Винил, оригинальные пресы. Москва.</p>
-            </div>
+            <h1 class="site-title">Свой звук</h1>
         </a>
     </div>
 </header>

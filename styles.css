@@ -4283,3 +4283,38 @@ body > .container,
     filter: none !important;
   }
 }
+
+
+/* ============================================================
+   КОМПАКТНАЯ ШАПКА
+   Логотип — обычный элемент прямо перед названием (не absolute),
+   подзаголовок убран, отступы уменьшены.
+   ============================================================ */
+.main-header {
+  padding: 12px 0;
+}
+
+.logo-link {
+  gap: 12px;
+}
+
+.logo-icon {
+  position: static;
+  transform: none;
+  left: auto;
+  top: auto;
+  width: 46px;
+  height: 46px;
+  opacity: 1;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .main-header { padding: 9px 0; }
+  .logo-icon { width: 40px; height: 40px; }
+  .site-title { font-size: 1.3rem; }
+}
