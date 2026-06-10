@@ -15,6 +15,5 @@ Thumbs.db
 /vendor/
 /node_modules/
 
-# Аудио держим в Git LFS (см. шаг 2), либо раскомментируйте,
-# чтобы не коммитить вовсе:
-# assets/audio/"assets/audio/" 
+# Аудио не коммитим — заливается на хостинг отдельно
+assets/audio/

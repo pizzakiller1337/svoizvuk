@@ -4295,7 +4295,9 @@ body > .container,
 }
 
 .logo-link {
-  gap: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .logo-icon {
@@ -4303,18 +4305,23 @@ body > .container,
   transform: none;
   left: auto;
   top: auto;
-  width: 46px;
-  height: 46px;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
   opacity: 1;
+  display: block;
+  flex-shrink: 0;
 }
 
 .site-title {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   line-height: 1;
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 600px) {
   .main-header { padding: 9px 0; }
-  .logo-icon { width: 40px; height: 40px; }
-  .site-title { font-size: 1.3rem; }
+  .logo-icon { width: 52px; height: 52px; }
+  .site-title { font-size: 1.35rem; }
 }
