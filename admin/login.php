@@ -63,19 +63,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
+    <link rel="stylesheet" href="/tokens.css?v=1">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, sans-serif; }
-        body { background: #111; color: #e5e5e5; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-        .login-box { background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 12px; padding: 48px 40px; width: 100%; max-width: 420px; }
-        .login-box h1 { font-size: 1.5rem; margin-bottom: 8px; color: #fff; }
-        .login-box p { color: #888; font-size: 0.9rem; margin-bottom: 32px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-sans); }
+        body { background: var(--surface-0); color: var(--text-primary); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        :where(a, button, input):focus-visible { outline: 2px solid rgba(255, 255, 255, 0.75); outline-offset: 2px; }
+        .login-box { background: var(--surface-2); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 48px 40px; width: 100%; max-width: 420px; }
+        .login-box h1 { font-size: 1.5rem; margin-bottom: 8px; color: var(--text-white); }
+        .login-box p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 32px; }
         .form-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 6px; font-size: 0.85rem; color: #aaa; }
-        input { width: 100%; padding: 12px 14px; background: #2a2a2a; border: 1px solid #333; border-radius: 8px; color: #e5e5e5; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
-        input:focus { border-color: #555; }
-        .btn { width: 100%; padding: 13px; background: #fff; color: #111; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
-        .btn:hover { background: #e0e0e0; }
-        .error { background: #3a1a1a; color: #f87171; border: 1px solid #5a2a2a; border-radius: 8px; padding: 12px 14px; margin-bottom: 20px; font-size: 0.9rem; }
+        label { display: block; margin-bottom: 6px; font-size: 0.85rem; color: var(--text-secondary); }
+        input { width: 100%; padding: 12px 14px; background: var(--surface-3); border: 1px solid var(--border-medium); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.95rem; transition: border-color var(--motion-fast); }
+        input:focus { border-color: var(--border-strong); }
+        .btn { width: 100%; padding: 13px; background: var(--accent); color: var(--accent-inverse); border: none; border-radius: var(--radius-md); font-size: 1rem; font-weight: 600; cursor: pointer; transition: background var(--motion-fast); }
+        .btn:hover { background: var(--accent-hover); }
+        .error { background: var(--danger-bg); color: var(--danger); border: 1px solid var(--danger-border); border-radius: var(--radius-md); padding: 12px 14px; margin-bottom: 20px; font-size: 0.9rem; }
     </style>
 </head>
 <body>

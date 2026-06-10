@@ -97,7 +97,7 @@ $all_products = mysqli_fetch_all($all_products_result, MYSQLI_ASSOC);
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
     <title>Свой звук</title>
-    <link rel="stylesheet" href="styles.css?v=5">
+    <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 
