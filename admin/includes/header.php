@@ -28,7 +28,7 @@ if (isset($link) && $link) {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="/admin/includes/admin.css?v=4">
+    <link rel="stylesheet" href="/admin/includes/admin.css?v=5">
 </head>
 <body>
 <div class="admin-layout">

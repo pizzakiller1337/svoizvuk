@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
     <?php require __DIR__ . "/meta_og.php"; ?>
-    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="styles.css?v=12">
 </head>
 <body>
 <?php require 'header.php'; ?>

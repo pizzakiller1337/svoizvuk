@@ -2,7 +2,7 @@
    ПЕРЕМЕННЫЕ вынесены в tokens.css — единый источник
    для сайта и админки. Менять только там.
    ============================================================ */
-@import url("tokens.css?v=4");
+@import url("tokens.css?v=5");
 
 
 /* ============================================================
@@ -12,8 +12,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-               Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-sans);
 }
 
 html {
@@ -1695,25 +1694,11 @@ a.contact-value:hover {
 }
 
 .footer-logo-text {
-  font-size: var(--fs-lg);
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 600;
   color: var(--text-white);
-  letter-spacing: -0.015em;
-}
-
-.footer-tagline {
-  font-size: var(--fs-base);
-  color: var(--text-secondary);
-  line-height: 1.5;
-  max-width: 280px;
-  margin: 0;
-}
-
-.footer-tagline-sub {
-  font-size: var(--fs-sm);
-  color: var(--text-muted);
-  font-style: italic;
-  margin: 0;
+  letter-spacing: 0;
 }
 
 /* --- Заголовки колонок --- */

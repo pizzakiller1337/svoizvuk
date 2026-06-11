@@ -2,7 +2,7 @@
    АДМИН-ПАНЕЛЬ — общие стили
    Цвета/радиусы/тени — только через токены (tokens.css).
    ============================================================ */
-@import url("/tokens.css?v=4");
+@import url("/tokens.css?v=5");
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-sans); }
 body { background: var(--surface-0); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; }

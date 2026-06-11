@@ -7,8 +7,6 @@
                 <img src="assets/logo/logo.png" alt="Свой звук" class="footer-logo-icon">
                 <span class="footer-logo-text">Свой звук</span>
             </a>
-            <p class="footer-tagline">Винил с душой. Музыка, которая остаётся.</p>
-            <p class="footer-tagline-sub">Не для всех — для своих.</p>
         </div>
 
         <!-- Каталог -->
