@@ -31,7 +31,7 @@ if ($r) { $stats['genres'] = (int)mysqli_fetch_assoc($r)['c']; }
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 <?php require 'header.php'; ?>
@@ -136,7 +136,7 @@ if ($r) { $stats['genres'] = (int)mysqli_fetch_assoc($r)['c']; }
                         если непонятно, что выбрать из переизданий. Можно просто
                         поговорить о музыке — мы за.
                     </p>
-                    <a href="index.php" class="contact-cta">Открыть каталог</a>
+                    <a href="index.php" class="btn btn-primary">Открыть каталог</a>
                 </div>
 
                 <div class="contact-right">

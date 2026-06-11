@@ -58,7 +58,7 @@ if (!empty($_SESSION['cart'])) {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 <?php require 'header.php'; ?>
@@ -70,7 +70,7 @@ if (!empty($_SESSION['cart'])) {
             <div class="cart-empty">
                 <p class="cart-empty-title">Ваша корзина пока пуста</p>
                 <p class="cart-empty-sub">Самое время найти пластинку, которая останется с вами надолго.</p>
-                <a href="index.php" class="btn btn-primary btn-buy cart-empty-btn">Перейти в каталог</a>
+                <a href="index.php" class="btn btn-primary btn-buy">Перейти в каталог</a>
             </div>
         <?php else: ?>
             <form method="POST" id="cart-form" class="cart-layout">
@@ -133,7 +133,7 @@ if (!empty($_SESSION['cart'])) {
                         </p>
                     <?php endif; ?>
 
-                    <a href="checkout.php" class="btn btn-primary btn-checkout summary-btn cart-checkout-btn">Оформить заказ</a>
+                    <a href="checkout.php" class="btn btn-primary summary-btn cart-checkout-btn">Оформить заказ</a>
 
                     <a href="index.php" class="cart-continue">← Продолжить покупки</a>
                 </aside>

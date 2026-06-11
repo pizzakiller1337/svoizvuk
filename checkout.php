@@ -116,7 +116,7 @@ $grand_total = $total + $delivery_cost;
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 <?php require 'header.php'; ?>
@@ -279,7 +279,7 @@ $grand_total = $total + $delivery_cost;
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-checkout summary-btn">Перейти к оплате</button>
+                        <button type="submit" class="btn btn-primary summary-btn">Перейти к оплате</button>
                         <a href="cart.php" class="summary-back">← Вернуться в корзину</a>
                     </div>
                 </aside>

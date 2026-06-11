@@ -51,8 +51,8 @@ main {
 .top-bar {
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 8px 0;
-  font-size: 0.85rem;
+  padding: 6px 0;
+  font-size: 0.82rem;
 }
 
 .top-bar .container {
@@ -128,206 +128,43 @@ main {
 
 
 /* ============================================================
-   ОСНОВНОЙ ХЕДЕР
+   ОСНОВНОЙ ХЕДЕР — единственное определение (схлопнуто из 4)
+   Декоративные слои (зерно, бороздки) — в секции
+   «ХЕДЕР — РАСШИРЕННЫЙ ДИЗАЙН» ниже.
    ============================================================ */
-.main-header {
-  background: var(--bg-base);
-  padding: 30px 0;
-}
 
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  flex-wrap: wrap;
-}
 
 .logo-link {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   text-decoration: none;
   color: inherit;
-  position: relative;
   flex-shrink: 0;
 }
 
 .logo-icon {
-  /* Большой логотип через position absolute — не влияет на поток */
-  position: absolute;
-  left: -10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 140px;
-  height: 140px;
+  display: block;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
-  opacity: 0.9;
-  pointer-events: none;
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  /* отступ слева, чтобы текст не перекрывался логотипом */
-  padding-left: 110px;
+  flex-shrink: 0;
 }
 
 .site-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-white);
-}
-
-.site-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  margin-top: 4px;
-  opacity: 0.9;
-}
-
-/* ----- Эквалайзер (справа в карточке альбома) ----- */
-.equalizer {
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-  height: 36px;
-  flex-shrink: 0;
-  opacity: 0.75;
-}
-
-.eq-bar {
-  display: block;
-  width: 3px;
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 0.2),
-    var(--text-white)
-  );
-  border-radius: 1.5px;
-  animation: eq-pulse 1.2s ease-in-out infinite;
-  transform-origin: bottom;
-}
-
-/* Разные задержки + стартовые высоты — чтобы было живее */
-.eq-bar:nth-child(1) { animation-delay: -0.1s;  height: 40%; }
-.eq-bar:nth-child(2) { animation-delay: -0.45s; height: 70%; }
-.eq-bar:nth-child(3) { animation-delay: -0.25s; height: 90%; }
-.eq-bar:nth-child(4) { animation-delay: -0.7s;  height: 50%; }
-.eq-bar:nth-child(5) { animation-delay: -0.3s;  height: 100%; }
-.eq-bar:nth-child(6) { animation-delay: -0.55s; height: 65%; }
-.eq-bar:nth-child(7) { animation-delay: -0.15s; height: 45%; }
-.eq-bar:nth-child(8) { animation-delay: -0.8s;  height: 80%; }
-
-.album-of-week:hover .equalizer {
-  opacity: 1;
-}
-
-@keyframes eq-pulse {
-  0%, 100% { transform: scaleY(0.4); }
-  50%      { transform: scaleY(1);   }
-}
-
-/* На системах с prefers-reduced-motion — статично */
-@media (prefers-reduced-motion: reduce) {
-  .eq-bar { animation: none; }
-}
-
-/* ----- Альбом недели ----- */
-.album-of-week {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 10px 18px 10px 10px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  text-decoration: none;
-  color: inherit;
-  transition: all var(--transition);
-  flex-shrink: 0;
-  max-width: 420px;
-}
-
-.album-of-week:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--border-strong);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-2);
-}
-
-.aow-cover-wrap {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  flex-shrink: 0;
-}
-
-.aow-cover {
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-  display: block;
-  background: var(--bg-card);
-  position: relative;
-  z-index: 2;
-  box-shadow: var(--shadow-1);
-}
-
-/* Винил, выезжающий из-за обложки на ховере */
-.aow-vinyl {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at center, transparent 18%, #1a1a1a 18%, #1a1a1a 22%, transparent 22%),
-    repeating-radial-gradient(circle at center, #0a0a0a 0, #0a0a0a 1px, #1a1a1a 1px, #1a1a1a 3px);
-  z-index: 1;
-  transition: transform 0.5s ease;
-}
-
-.album-of-week:hover .aow-vinyl {
-  transform: translateX(28px) rotate(180deg);
-}
-
-.aow-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-  flex: 1;
-}
-
-.aow-label {
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.aow-title {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1;
   color: var(--text-white);
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
 }
 
-.aow-artist {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+@media (max-width: 600px) {
+  .main-header { padding: 9px 0; }
+  .logo-icon { width: 52px; height: 52px; }
+  .site-title { font-size: 1.35rem; }
 }
 
 /* Адаптив хедера */
@@ -336,15 +173,9 @@ main {
     justify-content: center;
     gap: 20px;
   }
-  .album-of-week {
-    max-width: 100%;
-  }
 }
 
 
-/* ============================================================
-   БЕГУЩАЯ СТРОКА
-   ============================================================ */
 /* ============================================================
    НАВИГАЦИЯ / ФИЛЬТРЫ
    ============================================================ */
@@ -441,7 +272,7 @@ main {
   border: 1px solid var(--border-light);
   white-space: nowrap;
   flex-shrink: 0;
-  transition: all 0.25s ease;
+  transition: all var(--motion-fast);
 }
 
 .chip:hover {
@@ -474,7 +305,7 @@ main {
   justify-content: center;
   padding: 0 0 2px;       /* центруем «‹›» по вертикали */
   z-index: 2;
-  transition: all 0.2s ease;
+  transition: all var(--motion-fast);
   opacity: 0.85;
 }
 
@@ -512,7 +343,7 @@ main {
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-white);
-  transition: all 0.25s ease;
+  transition: all var(--motion-fast);
 }
 
 .search-input::placeholder {
@@ -605,12 +436,6 @@ main {
   padding: 1.6rem 1.4rem 3rem;
 }
 
-#selected-album.placeholder-active {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-}
 
 .sidebar-inner h3 {
   font-size: 1.35rem;
@@ -694,9 +519,10 @@ main {
 /* ============================================================
    КНОПКИ
    ============================================================ */
-.btn-details,
 .full-width {
-  display: inline-block;
+  display: block;
+  width: 100%;
+  margin-top: 1.4rem;
   padding: 10px 20px;
   background: var(--bg-card);
   color: var(--text-white);
@@ -710,19 +536,6 @@ main {
   transition: all var(--transition);
 }
 
-.btn-details {
-  margin-top: 15px;
-  width: 100%;
-  max-width: 160px;
-}
-
-.full-width {
-  display: block;
-  width: 100%;
-  margin-top: 1.4rem;
-}
-
-.btn-details:hover,
 .full-width:hover {
   background: transparent;
   color: var(--text-white);
@@ -755,7 +568,7 @@ main {
   border: 1px solid var(--border-light);
   background: var(--text-white);
   margin-bottom: 16px;
-  transition: transform 0.25s ease;
+  transition: transform var(--motion-fast);
 }
 
 .product-card:hover img {
@@ -795,25 +608,28 @@ main {
   padding: 30px;
 }
 
+/* Заголовок секции каталога (схлопнуто из 2 определений) */
 .section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 30px;
-  text-align: center;
   position: relative;
-  padding-bottom: 10px;
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+  padding-bottom: 14px;
+  margin-bottom: 28px;
 }
 
 .section-title::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
+  left: 0;
+  width: 40px;
   height: 2px;
-  background: var(--border-strong);
+  background: var(--text-white);
+  opacity: 0.4;
 }
 
 
@@ -836,14 +652,6 @@ main {
 }
 
 /* --- Общий «глазик» для подзаголовков-меток --- */
-.about-eyebrow {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--text-muted);
-  font-weight: 700;
-  margin: 0 0 14px;
-}
 
 /* ===== HERO ===== */
 .about-hero {
@@ -862,13 +670,6 @@ main {
   max-width: 900px;
 }
 
-.about-hero-accent {
-  display: inline-block;
-  font-style: italic;
-  font-weight: 600;
-  color: var(--text-secondary);
-  position: relative;
-}
 
 .about-hero-sub {
   font-size: 1.05rem;
@@ -895,7 +696,7 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.025);
-  transition: border-color 0.25s ease, background 0.25s ease;
+  transition: border-color var(--motion-fast), background var(--motion-fast);
 }
 
 .stat-card:hover,
@@ -940,47 +741,6 @@ main {
   line-height: 1.5;
 }
 
-/* ===== MANIFESTO ===== */
-.about-manifesto {
-  padding: 80px 30px;
-  text-align: center;
-  position: relative;
-}
-
-.manifesto-quote-mark {
-  display: block;
-  font-family: Georgia, serif;
-  font-size: 8rem;
-  line-height: 0.6;
-  color: rgba(255, 255, 255, 0.08);
-  margin-bottom: 10px;
-  user-select: none;
-}
-
-.manifesto-text {
-  font-size: clamp(1.3rem, 2.6vw, 2rem);
-  font-weight: 400;
-  line-height: 1.4;
-  color: var(--text-primary);
-  max-width: 820px;
-  margin: 0 auto 20px;
-  letter-spacing: -0.005em;
-}
-
-.manifesto-text em {
-  font-style: italic;
-  color: var(--text-white);
-  font-weight: 500;
-}
-
-.manifesto-author {
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--text-muted);
-  margin: 0;
-}
-
 /* ===== СЕКЦИЯ ===== */
 .about-section {
   padding-top: 140px;
@@ -990,14 +750,6 @@ main {
   margin-bottom: 22px;
 }
 
-.about-section-eyebrow {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--text-muted);
-  font-weight: 700;
-  margin: 0 0 10px;
-}
 
 .about-section-title {
   font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -1016,9 +768,6 @@ main {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.about-grid--4 {
-  grid-template-columns: repeat(4, 1fr);
-}
 
 /* ===== Заголовок + текст внутри карточки — единые для всех ===== */
 .tile-title,
@@ -1039,76 +788,8 @@ main {
   opacity: 0.9;
 }
 
-/* ===== TILE (что мы делаем) ===== */
-/* Базовый вид — в общем блоке "карточки about-страницы" выше.
-   Здесь только специфика контента. */
-
-.tile-icon {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 22px;
-  color: var(--text-white);
-  opacity: 0.85;
-}
-
-.tile-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
 /* ===== FEATURES (как у нас устроено) ===== */
 /* Базовый вид — в общем блоке выше. Никаких отдельных правил. */
-
-/* ===== TIMELINE ===== */
-.about-timeline {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  counter-reset: step;
-}
-
-.timeline-step {
-  position: relative;
-  padding: 26px 22px;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.02);
-  transition: all var(--transition);
-}
-
-.timeline-step:hover {
-  border-color: var(--border-strong);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.step-num {
-  display: inline-block;
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.18);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.step-body h4 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--text-white);
-  margin: 0 0 8px;
-}
-
-.step-body p {
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  line-height: 1.55;
-  margin: 0;
-  opacity: 0.85;
-}
 
 /* ===== КОНТАКТНЫЙ БЛОК ===== */
 .about-contact-block {
@@ -1141,35 +822,9 @@ main {
   max-width: 480px;
 }
 
-.contact-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
-  background: var(--text-white);
-  color: var(--bg-dark);
-  text-decoration: none;
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--text-white);
-  transition: all var(--transition);
-}
 
-.contact-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-2);
-}
 
-.contact-cta .cta-arrow {
-  transition: transform 0.3s ease;
-}
 
-.contact-cta:hover .cta-arrow {
-  transform: translateX(4px);
-}
 
 .contact-right {
   display: flex;
@@ -1201,7 +856,7 @@ main {
   font-size: 1.05rem;
   color: var(--text-white);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--motion-fast);
 }
 
 a.contact-value:hover {
@@ -1209,21 +864,16 @@ a.contact-value:hover {
 }
 
 /* ===== АДАПТИВ ===== */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .about-grid--3 { grid-template-columns: 1fr 1fr; }
-  .about-grid--4 { grid-template-columns: 1fr 1fr; }
-  .about-timeline { grid-template-columns: 1fr 1fr; }
   .contact-inner { grid-template-columns: 1fr; gap: 40px; }
   .about-stats { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 600px) {
   .about-hero { padding: 50px 0 40px; }
   .about-section { padding-top: 50px; }
-  .about-manifesto { padding: 60px 20px; }
-  .about-grid--3,
-  .about-grid--4,
-  .about-timeline { grid-template-columns: 1fr; }
+  .about-grid--3 { grid-template-columns: 1fr; }
   .about-stats { grid-template-columns: 1fr; }
   .about-contact-block { padding: 40px 0; margin-top: 50px; }
   .contact-row { grid-template-columns: 1fr; gap: 4px; }
@@ -1381,6 +1031,7 @@ a.contact-value:hover {
 }
 
 .play-btn {
+  position: relative;            /* для расширенной тач-зоны ::after */
   background: rgba(255, 255, 255, 0.06);
   color: var(--text-primary);
   border: 1px solid var(--border-light);
@@ -1394,7 +1045,15 @@ a.contact-value:hover {
   justify-content: center;
   flex-shrink: 0;
   padding-left: 2px;
-  transition: all 0.2s ease;
+  transition: all var(--motion-fast);
+}
+
+/* Расширенная тач-зона 46px (a11y) */
+.play-btn::after {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
 }
 
 .play-btn:hover {
@@ -1478,38 +1137,13 @@ a.contact-value:hover {
   margin-bottom: 36px;
 }
 
+/* layout-хелпер: ширина CTA на карточке товара */
 .btn-buy {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
   width: 100%;
   max-width: 320px;
-  padding: 16px 28px;
-  background: var(--text-white);
-  color: var(--bg-dark);
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-align: center;
-  border: 1px solid var(--text-white);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all var(--transition);
 }
 
-.btn-buy:hover {
-  background: transparent;
-  color: var(--text-white);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-2);
-}
 
-.btn-buy:active {
-  transform: translateY(0);
-}
 
 /* Сетка характеристик */
 .info-grid {
@@ -1576,7 +1210,7 @@ a.contact-value:hover {
 }
 
 /* Адаптив страницы продукта */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .detail-layout {
     grid-template-columns: 1fr;
     gap: 36px;
@@ -1595,7 +1229,7 @@ a.contact-value:hover {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .product-detail_page2 {
     padding: 24px 18px 60px;
   }
@@ -1630,13 +1264,6 @@ a.contact-value:hover {
   max-width: 460px;
 }
 
-.auth-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-white);
-  letter-spacing: -0.015em;
-  margin: 0 0 32px;
-}
 
 .auth-form-row {
   display: grid;
@@ -1655,16 +1282,15 @@ a.contact-value:hover {
   text-decoration: none;
   font-weight: 600;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  transition: border-color 0.2s ease;
+  transition: border-color var(--motion-fast);
 }
 
 .auth-switch a:hover {
   border-color: var(--text-white);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .auth-section { padding: 50px 18px 70px; }
-  .auth-title { font-size: 1.7rem; margin-bottom: 24px; }
   .auth-form-row { grid-template-columns: 1fr; gap: 0; }
 }
 
@@ -1701,49 +1327,14 @@ a.contact-value:hover {
   box-shadow: var(--focus-ring-soft);
 }
 
+/* layout-хелпер: кнопка на всю ширину формы */
 .btn-login {
   width: 100%;
-  padding: 14px;
-  background: var(--text-white);
-  color: var(--bg-dark);
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  cursor: pointer;
   margin-top: 10px;
-  border: 1px solid var(--text-white);
-  transition: all var(--transition);
-  position: relative;
-  overflow: hidden;
 }
 
-.btn-login::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(0, 0, 0, 0.1) 50%,
-    transparent 100%
-  );
-  transition: left 0.6s ease;
-  pointer-events: none;
-}
 
-.btn-login:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-2);
-}
 
-.btn-login:hover::after {
-  left: 100%;
-}
 
 /* ============================================================
    КОРЗИНА
@@ -1783,7 +1374,7 @@ a.contact-value:hover {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.025);
-  transition: border-color 0.25s ease, background 0.25s ease;
+  transition: border-color var(--motion-fast), background var(--motion-fast);
 }
 
 .cart-item:hover {
@@ -1820,7 +1411,7 @@ a.contact-value:hover {
   color: var(--text-white);
   text-decoration: none;
   line-height: 1.25;
-  transition: color 0.2s ease;
+  transition: color var(--motion-fast);
 }
 
 .cart-item-title:hover {
@@ -1865,7 +1456,7 @@ a.contact-value:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: all var(--motion-fast);
 }
 
 .cart-item-remove:hover {
@@ -1891,28 +1482,9 @@ a.contact-value:hover {
   box-shadow: var(--focus-ring-soft);
 }
 
-.cart-update-btn {
-  align-self: flex-start;
-  margin-top: 6px;
-}
 
 /* Базовая геометрия кнопок корзины (цвета задаёт блок унификации) */
-.btn-update {
-  padding: 14px 28px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
 
-.btn-checkout {
-  display: inline-block;
-  padding: 14px 40px;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
 
 /* --- Сводка заказа (sticky) --- */
 .cart-summary {
@@ -1979,12 +1551,10 @@ a.contact-value:hover {
   text-align: center;
 }
 
+/* layout-хелпер: кнопка в корзине */
 .cart-checkout-btn {
-  display: block;
   width: 100%;
   margin-top: 22px;
-  padding: 15px;
-  text-align: center;
 }
 
 .cart-continue {
@@ -1994,7 +1564,7 @@ a.contact-value:hover {
   font-size: 0.88rem;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--motion-fast);
 }
 
 .cart-continue:hover {
@@ -2024,13 +1594,9 @@ a.contact-value:hover {
   max-width: 380px;
 }
 
-.cart-empty-btn {
-  display: inline-block;
-  padding: 14px 36px;
-}
 
 /* --- Адаптив корзины --- */
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
   .cart-layout {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -2040,7 +1606,7 @@ a.contact-value:hover {
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 600px) {
   .cart-page { padding: 24px 18px 60px; }
   .cart-item {
     grid-template-columns: 64px 1fr auto;
@@ -2181,7 +1747,7 @@ a.contact-value:hover {
 .footer-links a {
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition: color var(--motion-fast), transform var(--motion-fast);
   display: inline-block;
 }
 
@@ -2228,7 +1794,7 @@ a.contact-value:hover {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-light);
   color: var(--text-secondary);
-  transition: all 0.25s ease;
+  transition: all var(--motion-fast);
 }
 
 .social-link svg {
@@ -2273,7 +1839,7 @@ a.contact-value:hover {
 .footer-meta a {
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--motion-fast);
 }
 
 .footer-meta a:hover {
@@ -2285,7 +1851,7 @@ a.contact-value:hover {
 }
 
 /* --- Адаптив --- */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .footer-inner {
     grid-template-columns: 1fr 1fr;
     gap: 36px;
@@ -2295,7 +1861,7 @@ a.contact-value:hover {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .site-footer {
     padding: 40px 0 20px;
     margin-top: 60px;
@@ -2659,19 +2225,12 @@ textarea.form-input {
   margin-top: 2px;
 }
 
+/* layout-хелпер: кнопка сводки заказа */
 .summary-btn {
   width: 100%;
   margin-top: 16px;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
 }
 
-.summary-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
 
 .summary-back {
   display: block;
@@ -3083,423 +2642,15 @@ textarea.form-input {
    ============================================================ */
 
 /* --- 1. Шапка плотнее --- */
-.main-header {
-  padding: 14px 0;        /* было 18px */
-}
 
-.site-title {
-  font-size: 1.6rem;      /* было 1.85rem */
-  letter-spacing: -0.01em;
-}
 
-.site-subtitle {
-  font-size: 0.88rem;     /* было 0.95rem */
-  opacity: 0.75;
-}
 
-.logo-icon {
-  width: 76px;            /* было 100px */
-  height: 76px;
-  left: -4px;
-}
 
-.logo-text {
-  padding-left: 64px;     /* было 80px — под новый размер логотипа */
-}
 
-/* --- 2. Заголовки секций по левому краю + тоньше --- */
-.section-title {
-  text-align: left;
-  font-size: 1.5rem;      /* было 2rem */
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--text-secondary);
-  padding-bottom: 14px;
-  margin-bottom: 28px;
-}
 
-/* Линия теперь слева под заголовком, а не по центру */
-.section-title::after {
-  left: 0;
-  transform: none;
-  width: 40px;
-  background: var(--text-white);
-  opacity: 0.4;
-}
 
-/* --- 3. Top-bar плотнее, но не уберём — это полезная инфа --- */
-.top-bar {
-  padding: 6px 0;          /* меньше воздуха сверху-снизу */
-}
-
-.top-bar .container {
-  font-size: 0.82rem;      /* мельче шрифт — меньше веса полосы */
-}
-
-.info-item,
-.top-link,
-.cart-btn,
-.login-btn {
-  font-size: 0.82rem;
-}
-
-/* На узких экранах не делаем шапку ещё ниже — она и так компактная */
 @media (max-width: 600px) {
-  .main-header { padding: 10px 0; }
-  .site-title { font-size: 1.35rem; }
-  .site-subtitle { font-size: 0.8rem; }
-  .logo-icon { width: 60px; height: 60px; }
-  .logo-text { padding-left: 50px; }
   .section-title { font-size: 1.15rem; }
-}
-
-
-/* ============================================================
-   HERO-БАННЕР «АЛЬБОМ НЕДЕЛИ»
-   Крупный двухколоночный блок на главной: большая обложка
-   слева, описание и CTA справа.
-   ============================================================ */
-.hero-featured {
-  margin: 24px 0 0;
-  animation: fadeIn 0.8s ease;
-}
-
-.hero-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
-  gap: 32px;
-  align-items: center;
-  padding: 24px 28px;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-3);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Тонкий блик в углу */
-.hero-inner::before {
-  content: '';
-  position: absolute;
-  top: -40%;
-  right: -10%;
-  width: 50%;
-  height: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(255, 255, 255, 0.06) 0%,
-    transparent 60%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* --- Обложка с винил-эффектом --- */
-.hero-cover-link {
-  display: block;
-  position: relative;
-  z-index: 1;
-  text-decoration: none;
-}
-
-.hero-cover-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-}
-
-.hero-cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--radius-sm);
-  display: block;
-  background: var(--bg-card);
-  position: relative;
-  z-index: 2;
-  box-shadow:
-    0 18px 48px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
-  transition: transform 0.5s ease;
-}
-
-.hero-vinyl {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at center, transparent 14%, #1a1a1a 14%, #1a1a1a 17%, transparent 17%),
-    radial-gradient(circle at center, transparent 8%, #0f0f0f 8%, #0f0f0f 9%, transparent 9%),
-    repeating-radial-gradient(circle at center, #0a0a0a 0, #0a0a0a 2px, #1a1a1a 2px, #1a1a1a 5px);
-  z-index: 1;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-  box-shadow: var(--shadow-3);
-}
-
-.hero-cover-link:hover .hero-vinyl {
-  transform: translateX(40%) rotate(180deg);
-}
-
-.hero-cover-link:hover .hero-cover {
-  transform: translateY(-3px);
-}
-
-/* --- Контент справа --- */
-.hero-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.hero-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.hero-star {
-  font-size: 0.85rem;
-  color: var(--text-white);
-  opacity: 0.7;
-}
-
-.hero-label {
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--text-muted);
-  font-weight: 700;
-}
-
-.hero-equalizer {
-  height: 12px;
-  gap: 2px;
-  opacity: 0.6;
-  margin-left: 2px;
-}
-
-.hero-equalizer .eq-bar {
-  width: 2px;
-}
-
-.hero-title {
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: var(--text-white);
-  line-height: 1.1;
-  letter-spacing: -0.015em;
-  margin: 0 0 4px;
-}
-
-.hero-artist {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  margin: 0 0 12px;
-  font-weight: 400;
-}
-
-.hero-meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  font-size: 0.82rem;
-  color: var(--text-muted);
-  margin: 0 0 18px;
-  font-variant-numeric: tabular-nums;
-}
-
-.hero-meta-sep {
-  opacity: 0.5;
-}
-
-.hero-description {
-  font-size: 0.9rem;
-  color: var(--text-primary);
-  line-height: 1.5;
-  margin: 0 0 18px;
-  max-width: 56ch;
-  opacity: 0.75;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* --- CTA + цена --- */
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.hero-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border-radius: var(--radius-sm);
-  transition: all var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-btn-primary {
-  background: var(--text-white);
-  color: var(--bg-dark);
-  border: 1px solid var(--text-white);
-}
-
-.hero-btn-primary::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(0, 0, 0, 0.1) 50%,
-    transparent 100%
-  );
-  transition: left 0.6s ease;
-  pointer-events: none;
-}
-
-.hero-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-2);
-}
-
-.hero-btn-primary:hover::after {
-  left: 100%;
-}
-
-.hero-btn-arrow {
-  transition: transform 0.3s ease;
-  display: inline-block;
-}
-
-.hero-btn-primary:hover .hero-btn-arrow {
-  transform: translateX(4px);
-}
-
-.hero-price {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-white);
-  letter-spacing: -0.01em;
-  font-variant-numeric: tabular-nums;
-}
-
-/* --- Адаптив --- */
-@media (max-width: 900px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 20px;
-  }
-  .hero-cover-wrap {
-    max-width: 220px;
-    margin: 0 auto;
-  }
-  .hero-content {
-    text-align: center;
-    align-items: center;
-  }
-  .hero-eyebrow,
-  .hero-meta,
-  .hero-actions {
-    justify-content: center;
-  }
-  .hero-title {
-    font-size: 1.6rem;
-  }
-  .hero-description {
-    text-align: center;
-  }
-}
-
-@media (max-width: 500px) {
-  .hero-featured {
-    margin-top: 20px;
-  }
-  .hero-inner {
-    padding: 20px;
-  }
-  .hero-title {
-    font-size: 1.6rem;
-  }
-  .hero-artist {
-    font-size: 1.05rem;
-  }
-  .hero-actions {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 14px;
-  }
-  .hero-btn-primary {
-    justify-content: center;
-  }
-  .hero-price {
-    text-align: center;
-  }
-}
-
-
-/* ============================================================
-   АЛЬБОМ НЕДЕЛИ В ШАПКЕ — компактная версия
-   Подстройка под уменьшенный размер шапки (логотип 100px).
-   ============================================================ */
-.album-of-week {
-  padding: 8px 14px 8px 8px;
-  gap: 12px;
-  max-width: 340px;
-}
-
-.aow-cover-wrap,
-.aow-cover,
-.aow-vinyl {
-  width: 48px;
-  height: 48px;
-}
-
-.album-of-week:hover .aow-vinyl {
-  transform: translateX(20px) rotate(180deg);
-}
-
-.aow-label {
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
-  margin-bottom: 1px;
-}
-
-.aow-title {
-  font-size: 0.88rem;
-}
-
-.aow-artist {
-  font-size: 0.76rem;
-}
-
-.equalizer {
-  height: 28px;
 }
 
 
@@ -3593,178 +2744,6 @@ textarea.form-input {
 
 
 /* ============================================================
-   ЕДИНЫЙ СТИЛЬ КНОПОК
-   Primary  — белая заливка + пробегающий блик
-   Secondary — плоская (единый стиль)
-   Применяется поверх существующих правил, сохраняя размеры/padding.
-   ============================================================ */
-
-/* ---- PRIMARY ---- */
-.btn-checkout,
-.summary-btn {
-  background: var(--text-white) !important;
-  color: var(--bg-dark) !important;
-  border: 1px solid var(--text-white) !important;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border-radius: var(--radius-sm);
-  position: relative;
-  overflow: hidden;
-  transition: all var(--transition);
-}
-
-.btn-checkout::after,
-.summary-btn::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(0, 0, 0, 0.1) 50%,
-    transparent 100%
-  );
-  transition: left 0.6s ease;
-  pointer-events: none;
-}
-
-.btn-checkout:hover,
-.summary-btn:hover {
-  background: var(--text-white) !important;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-2);
-}
-
-.btn-checkout:hover::after,
-.summary-btn:hover::after {
-  left: 100%;
-}
-
-/* ---- SECONDARY (плоские, единый стиль) ---- */
-.btn-update,
-.btn-details {
-  background: rgba(255, 255, 255, 0.06) !important;
-  color: var(--text-white) !important;
-  border: 1px solid var(--border-light) !important;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  transition: all var(--transition);
-}
-
-.btn-update:hover,
-.btn-details:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
-  border-color: var(--border-strong) !important;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-2);
-}
-
-
-/* ============================================================
-   КНОПКИ — ФИНАЛЬНАЯ УНИФИКАЦИЯ
-   Общий «скелет» для всех action-кнопок фронтенда:
-   единый радиус, ритм паддингов, типографика, переход.
-   Цвет различается по роли (primary / secondary / danger),
-   но форма и поведение — одинаковые.
-   ============================================================ */
-
-/* Общий скелет: применяется ко всем кнопкам-действиям */
-.btn-buy,
-.btn-login,
-.btn-checkout,
-.summary-btn,
-.contact-cta,
-.hero-btn-primary,
-.btn-update,
-.btn-details,
-.remove-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: inherit;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all var(--transition);
-  line-height: 1;
-}
-
-/* ---- DANGER (удаление) — единая форма, красный акцент ---- */
-.remove-btn {
-  background: var(--danger-bg);
-  color: var(--danger);
-  border: 1px solid var(--danger-border);
-  padding: 10px 18px;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-}
-
-.remove-btn:hover {
-  background: var(--danger-bg-strong);
-  border-color: var(--danger-border-strong);
-  color: var(--danger-hover);
-  text-decoration: none;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-danger);
-}
-
-
-/* ============================================================
-   ЕДИНАЯ СИСТЕМА КНОПОК (публичный сайт)
-   Три роли:
-     • PRIMARY   — белая заливка + блик (главное действие)
-     • SECONDARY — плоская (второстепенное действие)
-     • DANGER    — плоская с красным акцентом (удаление)
-   Текстовые ссылки топ-бара (cart-btn, login-btn) НЕ трогаем —
-   это навигация, а не кнопки-действия.
-   ============================================================ */
-
-/* ---- DANGER: удаление из корзины ---- */
-.remove-btn {
-  background: var(--danger-bg);
-  color: var(--danger);
-  border: 1px solid var(--danger-border);
-  border-radius: var(--radius-sm);
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  transition: all var(--transition);
-}
-
-.remove-btn:hover {
-  background: var(--danger-bg-strong);
-  border-color: var(--danger-border-strong);
-  color: var(--danger-hover);
-  text-decoration: none;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-danger);
-}
-
-/* ---- Выравниваем геометрию всех action-кнопок ---- */
-/* Одинаковая высота строки и плавность для единообразия */
-.btn-buy,
-.btn-login,
-.btn-checkout,
-.summary-btn,
-.btn-update,
-.btn-details,
-.remove-btn,
-.hero-btn,
-.contact-cta {
-  line-height: 1.2;
-  font-family: inherit;
-}
-
-/* ============================================================
    АДАПТИВ — СВОДНЫЙ БЛОК (добавлено для поддержки всех устройств)
    Брейкпоинты: 1024 (планшет-альбом) · 768 (планшет) ·
                 600 (крупный телефон) · 420 (компактный телефон)
@@ -3784,8 +2763,7 @@ iframe {
 /* Длинные слова/URL не должны распирать карточки и описания */
 .product-card .album-title,
 .cart-item-title,
-.summary-item-title,
-.aow-title {
+.summary-item-title {
   overflow-wrap: anywhere;
   word-break: break-word;
 }
@@ -3811,9 +2789,6 @@ iframe {
     overflow: visible;
     -webkit-mask-image: none;
             mask-image: none;
-  }
-  #selected-album.placeholder-active {
-    min-height: auto;
   }
 }
 
@@ -3908,9 +2883,6 @@ iframe {
   .products-grid {
     gap: 10px;
   }
-  .site-subtitle {
-    font-size: 0.85rem;
-  }
   /* Шаги оформления (1-Данные · 2-Оплата · 3-Готово) в столбик не нужны,
      но уменьшаем, чтобы влезали в одну строку */
   .checkout-steps li {
@@ -3980,7 +2952,7 @@ body > .container,
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background var(--motion-fast), color var(--motion-fast);
 }
 .inline-detail-close:hover,
 .inline-detail-close:active {
@@ -4065,7 +3037,7 @@ body > .container,
   /* очень узкие экраны — обложка чуть меньше */
 }
 
-@media (max-width: 380px) {
+@media (max-width: 420px) {
   .inline-detail-body {
     gap: 12px;
   }
@@ -4234,48 +3206,6 @@ body > .container,
 
 
 /* ============================================================
-   КОМПАКТНАЯ ШАПКА
-   Логотип — обычный элемент прямо перед названием (не absolute),
-   подзаголовок убран, отступы уменьшены.
-   ============================================================ */
-.main-header {
-  padding: 12px 0;
-}
-
-.logo-link {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.logo-icon {
-  position: static;
-  transform: none;
-  left: auto;
-  top: auto;
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  opacity: 1;
-  display: block;
-  flex-shrink: 0;
-}
-
-.site-title {
-  font-size: 1.6rem;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-}
-
-@media (max-width: 600px) {
-  .main-header { padding: 9px 0; }
-  .logo-icon { width: 52px; height: 52px; }
-  .site-title { font-size: 1.35rem; }
-}
-
-
-/* ============================================================
    ДОСТУПНОСТЬ (этап 1)
    1) Видимое фокус-кольцо для навигации с клавиатуры.
       :focus-visible — кольцо показывается только при клавиатурном
@@ -4290,25 +3220,15 @@ body > .container,
   outline-offset: 2px;
 }
 
-/* Кнопка play 32px — расширяем зону нажатия псевдоэлементом */
-.play-btn {
-  position: relative;
-}
-.play-btn::after {
-  content: "";
-  position: absolute;
-  inset: -7px;          /* 32px + 7px*2 = 46px зона касания */
-  border-radius: 50%;
-}
+
 
 
 /* ============================================================
    КОМПОНЕНТЫ (этап 3) — канонические классы.
    Кнопки: .btn + модификатор роли (.btn-primary / .btn-secondary /
    .btn-danger) + размер (.btn-sm) + ширина (.btn-block).
-   Легаси-классы (btn-buy, btn-checkout, summary-btn, btn-login…)
-   остаются в разметке только ради геометрии (ширина/отступы)
-   и будут удалены на этапе чистки.
+   btn-buy / btn-login / summary-btn / cart-checkout-btn —
+   layout-хелперы (только ширина/отступы), вид задаёт .btn.
    ============================================================ */
 .btn {
   display: inline-flex;

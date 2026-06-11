@@ -168,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 <?php require 'header.php'; ?>
@@ -330,7 +330,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php endif; ?>
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-checkout summary-btn" id="pay-btn">
+                        <button type="submit" class="btn btn-primary summary-btn" id="pay-btn">
                             Оплатить <?= number_format($grand_total, 0, '', ' ') ?> ₽
                         </button>
                         <a href="checkout.php" class="summary-back">← Изменить данные</a>

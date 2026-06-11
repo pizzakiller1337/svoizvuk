@@ -23,7 +23,7 @@ $order = $_SESSION['last_order'];
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 <?php require 'header.php'; ?>
@@ -141,7 +141,7 @@ $order = $_SESSION['last_order'];
             </div>
 
             <div class="success-actions">
-                <a href="index.php" class="btn btn-primary btn-checkout">Вернуться в каталог</a>
+                <a href="index.php" class="btn btn-primary">Вернуться в каталог</a>
             </div>
         </section>
     </div>
