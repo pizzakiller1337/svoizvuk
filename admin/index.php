@@ -86,7 +86,7 @@ require_once __DIR__ . '/includes/header.php';
         <div class="label">Всего заказов</div>
         <div class="value"><?= $total_orders ?></div>
         <?php if ($new_orders > 0): ?>
-            <div class="sublabel" style="color:#6db7ff;">+ <?= $new_orders ?> новых</div>
+            <div class="sublabel u-accent">+ <?= $new_orders ?> новых</div>
         <?php endif; ?>
     </div>
     <div class="stat-card">
@@ -105,7 +105,7 @@ require_once __DIR__ . '/includes/header.php';
 </div>
 
 <?php if ($orders_schema['ok']): ?>
-<div class="card" style="margin-bottom:20px;">
+<div class="card u-mb20">
     <div class="card-header">
         <h3>Последние заказы</h3>
         <a href="orders/index.php" class="btn btn-edit btn-sm">Все заказы →</a>
@@ -123,19 +123,19 @@ require_once __DIR__ . '/includes/header.php';
         </thead>
         <tbody>
             <?php if (empty($recent_orders)): ?>
-                <tr><td colspan="6" style="text-align:center;color:#555;padding:40px;">Заказов пока нет</td></tr>
+                <tr><td colspan="6" class="empty-state">Заказов пока нет</td></tr>
             <?php endif; ?>
 
             <?php foreach ($recent_orders as $o): ?>
             <tr>
-                <td style="font-family:'Courier New',monospace;font-size:0.85rem;">
+                <td class="u-mono">
                     <?= htmlspecialchars($o['order_number']) ?>
                 </td>
-                <td style="color:#888;font-size:0.85rem;">
+                <td class="u-muted u-sm">
                     <?= date('d.m.Y H:i', strtotime($o['created_at'])) ?>
                 </td>
                 <td><?= htmlspecialchars($o['customer_name']) ?></td>
-                <td style="font-weight:600;color:#fff;">
+                <td class="u-strong">
                     <?= number_format($o['total'], 0, '', ' ') ?> ₽
                 </td>
                 <td>
@@ -177,7 +177,7 @@ require_once __DIR__ . '/includes/header.php';
                     <?php if ($p['image_url']): ?>
                         <img src="<?= htmlspecialchars($p['image_url']) ?>" class="product-img" alt="">
                     <?php else: ?>
-                        <div style="width:48px;height:48px;background:#2a2a2a;border-radius:6px;"></div>
+                        <div class="thumb-ph"></div>
                     <?php endif; ?>
                 </td>
                 <td><?= htmlspecialchars($p['title']) ?></td>

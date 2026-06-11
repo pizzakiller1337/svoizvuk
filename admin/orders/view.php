@@ -93,12 +93,12 @@ require_once __DIR__ . '/../includes/header.php';
     <div class="alert alert-error"><?= htmlspecialchars($error) ?></div>
 <?php endif; ?>
 
-<div class="card-header" style="background:none;padding:0;margin-bottom:20px;">
+<div class="card-header card-header-plain">
     <div>
         <a href="index.php" class="btn btn-edit btn-sm">← К списку</a>
     </div>
-    <div style="display:flex;gap:8px;align-items:center;">
-        <span style="color:#666;font-size:0.85rem;">
+    <div class="u-row">
+        <span class="u-muted u-sm">
             Создан: <?= date('d.m.Y H:i', strtotime($order['created_at'])) ?>
         </span>
     </div>
@@ -106,13 +106,13 @@ require_once __DIR__ . '/../includes/header.php';
 
 <div class="order-grid">
     <!-- Левая колонка -->
-    <div style="display:flex;flex-direction:column;gap:16px;">
+    <div class="u-col">
 
         <div class="card">
             <div class="card-header">
                 <h3>
                     Заказ
-                    <span style="font-family:'Courier New',monospace;color:#fff;margin-left:8px;">
+                    <span class="u-mono u-white" style="margin-left:8px;">
                         <?= htmlspecialchars($order['order_number']) ?>
                     </span>
                 </h3>
@@ -159,10 +159,10 @@ require_once __DIR__ . '/../includes/header.php';
 
             <?php if (!empty($order['comment'])): ?>
                 <div style="padding:0 24px 24px;">
-                    <div class="label" style="font-size:0.75rem;color:#666;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;">
+                    <div class="label order-block-title">
                         Комментарий
                     </div>
-                    <div style="background:#252525;padding:12px 14px;border-radius:6px;color:#ccc;">
+                    <div class="note-box">
                         <?= nl2br(htmlspecialchars($order['comment'])) ?>
                     </div>
                 </div>
@@ -178,9 +178,9 @@ require_once __DIR__ . '/../includes/header.php';
                     <tr>
                         <th>Обложка</th>
                         <th>Пластинка</th>
-                        <th style="text-align:center;">Кол-во</th>
-                        <th style="text-align:right;">Цена</th>
-                        <th style="text-align:right;">Сумма</th>
+                        <th class="u-center">Кол-во</th>
+                        <th class="u-right">Цена</th>
+                        <th class="u-right">Сумма</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -190,24 +190,24 @@ require_once __DIR__ . '/../includes/header.php';
                                 <?php if ($it['image_url']): ?>
                                     <img src="<?= htmlspecialchars($it['image_url']) ?>" class="product-img" alt="">
                                 <?php else: ?>
-                                    <div style="width:48px;height:48px;background:#2a2a2a;border-radius:6px;"></div>
+                                    <div class="thumb-ph"></div>
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <div style="color:#fff;"><?= htmlspecialchars($it['title']) ?></div>
-                                <div style="color:#666;font-size:0.82rem;"><?= htmlspecialchars($it['artist']) ?></div>
+                                <div class="u-white"><?= htmlspecialchars($it['title']) ?></div>
+                                <div class="u-muted u-sm"><?= htmlspecialchars($it['artist']) ?></div>
                                 <?php if (!empty($it['product_id'])): ?>
                                     <a href="/admin/products/edit.php?id=<?= (int)$it['product_id'] ?>"
-                                       style="color:#666;font-size:0.75rem;text-decoration:none;">
+                                       class="link-muted u-xs">
                                         К товару →
                                     </a>
                                 <?php endif; ?>
                             </td>
-                            <td style="text-align:center;"><?= (int)$it['quantity'] ?></td>
-                            <td style="text-align:right;color:#888;">
+                            <td class="u-center"><?= (int)$it['quantity'] ?></td>
+                            <td class="u-right u-muted">
                                 <?= number_format($it['price'], 0, '', ' ') ?> ₽
                             </td>
-                            <td style="text-align:right;font-weight:600;color:#fff;">
+                            <td class="u-right u-strong">
                                 <?= number_format($it['subtotal'], 0, '', ' ') ?> ₽
                             </td>
                         </tr>
@@ -215,13 +215,13 @@ require_once __DIR__ . '/../includes/header.php';
                 </tbody>
             </table>
 
-            <div style="border-top:1px solid #2a2a2a;">
+            <div class="u-bt">
                 <div class="order-totals-row">
-                    <span style="color:#888;">Товары</span>
+                    <span class="u-muted">Товары</span>
                     <span><?= number_format($order['subtotal'], 0, '', ' ') ?> ₽</span>
                 </div>
                 <div class="order-totals-row">
-                    <span style="color:#888;">Доставка</span>
+                    <span class="u-muted">Доставка</span>
                     <span>
                         <?= $order['delivery_cost'] == 0
                             ? 'Бесплатно'
@@ -238,7 +238,7 @@ require_once __DIR__ . '/../includes/header.php';
     </div>
 
     <!-- Правая колонка — управление -->
-    <aside style="display:flex;flex-direction:column;gap:16px;">
+    <aside class="u-col">
         <div class="status-form">
             <h4>Статус заказа</h4>
 
@@ -266,13 +266,13 @@ require_once __DIR__ . '/../includes/header.php';
             <h4>Контакты покупателя</h4>
             <div style="margin-bottom:10px;">
                 <a href="mailto:<?= htmlspecialchars($order['customer_email']) ?>"
-                   style="color:#6db7ff;text-decoration:none;font-size:0.9rem;">
+                   class="link-accent">
                     <?= htmlspecialchars($order['customer_email']) ?>
                 </a>
             </div>
             <div>
                 <a href="tel:<?= htmlspecialchars(preg_replace('/\s/', '', $order['customer_phone'])) ?>"
-                   style="color:#6db7ff;text-decoration:none;font-size:0.9rem;">
+                   class="link-accent">
                     <?= htmlspecialchars($order['customer_phone']) ?>
                 </a>
             </div>

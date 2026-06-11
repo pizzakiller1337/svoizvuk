@@ -2,7 +2,7 @@
    АДМИН-ПАНЕЛЬ — общие стили
    Цвета/радиусы/тени — только через токены (tokens.css).
    ============================================================ */
-@import url("/tokens.css?v=1");
+@import url("/tokens.css?v=2");
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-sans); }
 body { background: var(--surface-0); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; }
@@ -130,6 +130,7 @@ input[type=date], textarea, select {
 }
 input:focus, textarea:focus, select:focus { border-color: var(--border-strong); }
 textarea { resize: vertical; min-height: 100px; }
+input[type=file] { color: var(--text-secondary); }
 .form-hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
 
 /* Alerts */
@@ -286,4 +287,70 @@ img { max-width: 100%; }
     .stat-card .value { font-size: 1.5rem; }
     .topbar-user { display: none; }
     .btn-actions { flex-wrap: wrap; }
+}
+
+/* ============================================================
+   УТИЛИТЫ — вместо повторяющихся inline-стилей (этап 5)
+   ============================================================ */
+.u-muted   { color: var(--text-muted); }
+.u-white   { color: var(--text-white); }
+.u-strong  { color: var(--text-white); font-weight: 600; }
+.u-accent  { color: #6db7ff; }
+.u-sm      { font-size: 0.85rem; }
+.u-xs      { font-size: 0.78rem; }
+.u-mono    { font-family: var(--font-mono); font-size: 0.85rem; }
+.u-center  { text-align: center; }
+.u-right   { text-align: right; }
+.u-row     { display: flex; gap: 10px; align-items: center; }
+.u-col     { display: flex; flex-direction: column; gap: 16px; }
+.u-mb20    { margin-bottom: 20px; }
+.u-p24     { padding: 24px; }
+.u-bt      { border-top: 1px solid var(--border-light); }
+
+.link-plain  { color: var(--text-primary); text-decoration: none; }
+.link-muted  { color: var(--text-muted); text-decoration: none; }
+.link-accent { color: #6db7ff; text-decoration: none; }
+
+/* порядок ниже link-* — чтобы цветовые утилиты их перекрывали */
+.u-white   { color: var(--text-white); }
+
+.req { color: var(--danger); }                /* звёздочка обязательного поля */
+
+.empty-state { text-align: center; color: var(--text-muted); padding: 40px; }
+
+.thumb-ph {
+    width: 48px; height: 48px;
+    background: var(--surface-3);
+    border-radius: var(--radius-sm);
+}
+
+.card-header-plain { background: none; padding: 0; margin-bottom: 20px; border-bottom: none; }
+
+.note-box {
+    background: var(--surface-3);
+    padding: 12px 14px;
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+}
+
+.img-preview {
+    width: 160px; height: 160px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+}
+
+.img-preview-ph {
+    width: 160px; height: 160px;
+    background: var(--surface-3);
+    border-radius: var(--radius-lg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+}
+
+.upload-box {
+    border: 1px dashed var(--border-medium);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    background: var(--surface-1);
 }

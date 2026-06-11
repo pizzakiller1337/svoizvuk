@@ -43,7 +43,7 @@ $products = mysqli_fetch_all(mysqli_stmt_get_result($list_stmt), MYSQLI_ASSOC);
 require_once __DIR__ . '/../includes/header.php';
 ?>
 
-<div class="card-header" style="background:none;padding:0;margin-bottom:20px;">
+<div class="card-header card-header-plain">
     <div></div>
     <a href="add.php" class="btn btn-primary">Добавить пластинку</a>
 </div>
@@ -75,22 +75,22 @@ require_once __DIR__ . '/../includes/header.php';
         </thead>
         <tbody>
             <?php if (empty($products)): ?>
-                <tr><td colspan="7" style="text-align:center;color:#555;padding:40px;">Ничего не найдено</td></tr>
+                <tr><td colspan="7" class="empty-state">Ничего не найдено</td></tr>
             <?php endif; ?>
 
             <?php foreach ($products as $p): ?>
             <tr>
-                <td style="color:#555"><?= (int)$p['product_id'] ?></td>
+                <td class="u-muted"><?= (int)$p['product_id'] ?></td>
                 <td>
                     <?php if ($p['image_url']): ?>
                         <img src="<?= htmlspecialchars($p['image_url']) ?>" class="product-img" alt="">
                     <?php else: ?>
-                        <div style="width:48px;height:48px;background:#2a2a2a;border-radius:6px;"></div>
+                        <div class="thumb-ph"></div>
                     <?php endif; ?>
                 </td>
                 <td>
                     <a href="../../product.php?id=<?= (int)$p['product_id'] ?>" target="_blank"
-                       style="color:#ccc;text-decoration:none;" title="Открыть на сайте">
+                       class="link-plain" title="Открыть на сайте">
                         <?= htmlspecialchars($p['title']) ?>
                     </a>
                 </td>

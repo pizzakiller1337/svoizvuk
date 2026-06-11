@@ -168,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
 <?php require 'header.php'; ?>
@@ -274,8 +274,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="sbp-block">
                             <div class="sbp-qr" aria-hidden="true">
                                 <div class="sbp-qr-grid">
-                                    <?php for ($i = 0; $i < 144; $i++): ?>
-                                        <span style="opacity:<?= rand(0, 1) ? '1' : '0' ?>"></span>
+                                    <?php for ($i = 0; $i < 144; $i++):
+                                        // детерминированный «шум»: узор стабилен между загрузками
+                                        $filled = (hexdec(substr(md5('svoizvuk-qr-' . $i), 0, 1)) & 1) === 1;
+                                    ?>
+                                        <span<?= $filled ? ' class="f"' : '' ?>></span>
                                     <?php endfor; ?>
                                 </div>
                             </div>

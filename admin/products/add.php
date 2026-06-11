@@ -64,22 +64,22 @@ require_once '../includes/header.php';
         <h3>Новая пластинка</h3>
         <a href="index.php" class="btn btn-edit btn-sm">← Назад к списку</a>
     </div>
-    <div style="padding: 24px;">
+    <div class="u-p24">
         <form method="POST" enctype="multipart/form-data">
             <div class="form-grid">
 
                 <div class="form-group">
-                    <label>Название альбома <span style="color:#f87171">*</span></label>
+                    <label>Название альбома <span class="req">*</span></label>
                     <input type="text" name="title" required value="<?= isset($_POST['title']) ? htmlspecialchars($_POST['title']) : '' ?>">
                 </div>
 
                 <div class="form-group">
-                    <label>Исполнитель <span style="color:#f87171">*</span></label>
+                    <label>Исполнитель <span class="req">*</span></label>
                     <input type="text" name="artist" required value="<?= isset($_POST['artist']) ? htmlspecialchars($_POST['artist']) : '' ?>">
                 </div>
 
                 <div class="form-group">
-                    <label>Цена (₽) <span style="color:#f87171">*</span></label>
+                    <label>Цена (₽) <span class="req">*</span></label>
                     <input type="number" name="price" min="0" required value="<?= isset($_POST['price']) ? (int)$_POST['price'] : '' ?>">
                 </div>
 
@@ -118,7 +118,7 @@ require_once '../includes/header.php';
 
                 <div class="form-group">
                     <label>Загрузить обложку (файл)</label>
-                    <input type="file" name="image" accept="image/*" style="color:#aaa;">
+                    <input type="file" name="image" accept="image/*" >
                     <div class="form-hint">Если указан и URL и файл — будет использован файл</div>
                 </div>
 
@@ -129,7 +129,7 @@ require_once '../includes/header.php';
 
             </div>
 
-            <div style="display:flex;gap:12px;margin-top:8px;">
+            <div class="btn-actions" style="margin-top:8px;">
                 <button type="submit" class="btn btn-primary">Сохранить</button>
                 <a href="index.php" class="btn btn-edit">Отмена</a>
             </div>

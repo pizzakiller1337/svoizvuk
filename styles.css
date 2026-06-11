@@ -2,7 +2,7 @@
    ПЕРЕМЕННЫЕ вынесены в tokens.css — единый источник
    для сайта и админки. Менять только там.
    ============================================================ */
-@import url("tokens.css?v=1");
+@import url("tokens.css?v=2");
 
 
 /* ============================================================
@@ -158,7 +158,7 @@ main {
   font-weight: 700;
   line-height: 1;
   color: var(--text-white);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
 @media (max-width: 600px) {
@@ -182,7 +182,7 @@ main {
 .category-nav {
   position: sticky;
   top: 0;
-  z-index: 99;
+  z-index: var(--z-sticky);
   background: var(--bg-overlay);
   backdrop-filter: blur(12px) saturate(110%);
   -webkit-backdrop-filter: blur(12px) saturate(110%);
@@ -390,7 +390,7 @@ main {
   position: sticky;
   top: 110px;
   align-self: flex-start;
-  z-index: 10;
+  z-index: var(--z-raised);
   height: calc(100vh - 110px - 2rem);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -443,7 +443,7 @@ main {
   color: var(--text-primary);
   margin-bottom: 1.4rem;
   text-align: center;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.04em;
   position: relative;
 }
 
@@ -480,7 +480,7 @@ main {
   font-size: 1.65rem;
   font-weight: 700;
   color: var(--text-primary);
-  letter-spacing: -0.4px;
+  letter-spacing: -0.015em;
   margin: 0.6rem 0 1.3rem;
 }
 
@@ -530,7 +530,7 @@ main {
   border-radius: 0;
   font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.04em;
   text-align: center;
   border: 1px solid var(--bg-card);
   transition: all var(--transition);
@@ -665,7 +665,7 @@ main {
   font-weight: 800;
   color: var(--text-white);
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   margin: 0 auto 26px;
   max-width: 900px;
 }
@@ -727,7 +727,7 @@ main {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   color: var(--text-white);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   font-variant-numeric: tabular-nums;
   line-height: 1;
 }
@@ -898,7 +898,7 @@ a.contact-value:hover {
   font-size: 0.95rem;
   margin-bottom: 30px;
   transition: color var(--transition);
-  letter-spacing: 0.2px;
+  letter-spacing: 0.02em;
 }
 
 .back-link:hover {
@@ -1083,7 +1083,7 @@ a.contact-value:hover {
 .album-eyebrow {
   font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.18em;
   color: var(--text-muted);
   margin-bottom: 14px;
   font-weight: 600;
@@ -1095,7 +1095,7 @@ a.contact-value:hover {
   color: var(--text-white);
   margin-bottom: 8px;
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
 .album-info .artist {
@@ -1129,7 +1129,7 @@ a.contact-value:hover {
   font-size: 2rem;
   font-weight: 700;
   color: var(--text-white);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
 /* Кнопка покупки */
@@ -1173,7 +1173,7 @@ a.contact-value:hover {
 .info-label {
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   color: var(--text-muted);
   font-weight: 600;
 }
@@ -1536,7 +1536,7 @@ a.contact-value:hover {
 .cart-summary-amount {
   font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1699,7 +1699,7 @@ a.contact-value:hover {
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--text-white);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
 .footer-tagline {
@@ -1766,7 +1766,7 @@ a.contact-value:hover {
 .footer-contact-label {
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   color: var(--text-muted);
   font-weight: 600;
 }
@@ -2292,6 +2292,7 @@ textarea.form-input {
   width: 38px;
   height: 28px;
   border-radius: var(--radius-sm);
+  /* золото чипа — осознанная скевоморфная декорация вне палитры */
   background: linear-gradient(135deg, #c9a96e, #6b552b);
   margin-bottom: 28px;
 }
@@ -2309,7 +2310,7 @@ textarea.form-input {
 .card-mock-number {
   font-size: 1.35rem;
   font-family: 'Courier New', monospace;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   margin-bottom: 22px;
   white-space: nowrap;
   overflow: hidden;
@@ -2360,9 +2361,13 @@ textarea.form-input {
   height: 100%;
 }
 
+/* Модули мок-QR: заполненные — через класс .f (детерминированный узор) */
 .sbp-qr-grid span {
-  background: #000;
   border-radius: 1px;
+}
+
+.sbp-qr-grid span.f {
+  background: #000;   /* QR обязан быть чёрно-белым */
 }
 
 .sbp-text p {
@@ -2377,7 +2382,7 @@ textarea.form-input {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: var(--z-overlay);
 }
 
 .payment-overlay[hidden] {
@@ -3240,7 +3245,7 @@ body > .container,
   font-family: inherit;
   font-size: 0.95rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   line-height: 1.2;
   text-align: center;

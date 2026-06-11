@@ -96,7 +96,7 @@ require_once '../includes/header.php';
 <div class="card">
     <div class="card-header">
         <h3>Редактирование товара #<?= $product_id ?></h3>
-        <div style="display:flex;gap:10px;">
+        <div class="u-row">
             <a href="../../product.php?id=<?= $product_id ?>" target="_blank" class="btn btn-edit btn-sm">👁 На сайте</a>
             <a href="index.php" class="btn btn-edit btn-sm">← Список</a>
         </div>
@@ -106,24 +106,24 @@ require_once '../includes/header.php';
         <!-- Превью обложки -->
         <div style="flex-shrink:0;">
             <?php if ($product['image_url']): ?>
-                <img src="<?= htmlspecialchars($product['image_url']) ?>" style="width:160px;height:160px;object-fit:cover;border-radius:10px;border:1px solid #2a2a2a;" alt="">
+                <img src="<?= htmlspecialchars($product['image_url']) ?>" class="img-preview" alt="">
             <?php else: ?>
-                <div style="width:160px;height:160px;background:#2a2a2a;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:3rem;">🎵</div>
+                <div class="img-preview-ph">🎵</div>
             <?php endif; ?>
         </div>
 
         <form method="POST" enctype="multipart/form-data" style="flex:1;">
             <div class="form-grid">
                 <div class="form-group">
-                    <label>Название альбома <span style="color:#f87171">*</span></label>
+                    <label>Название альбома <span class="req">*</span></label>
                     <input type="text" name="title" required value="<?= htmlspecialchars($product['title']) ?>">
                 </div>
                 <div class="form-group">
-                    <label>Исполнитель <span style="color:#f87171">*</span></label>
+                    <label>Исполнитель <span class="req">*</span></label>
                     <input type="text" name="artist" required value="<?= htmlspecialchars($product['artist']) ?>">
                 </div>
                 <div class="form-group">
-                    <label>Цена (₽) <span style="color:#f87171">*</span></label>
+                    <label>Цена (₽) <span class="req">*</span></label>
                     <input type="number" name="price" min="0" required value="<?= (int)$product['price'] ?>">
                 </div>
                 <div class="form-group">
@@ -153,14 +153,14 @@ require_once '../includes/header.php';
                 </div>
                 <div class="form-group">
                     <label>Заменить обложку (файл)</label>
-                    <input type="file" name="image" accept="image/*" style="color:#aaa;">
+                    <input type="file" name="image" accept="image/*" >
                 </div>
                 <div class="form-group full">
                     <label>Описание</label>
                     <textarea name="description" rows="5"><?= htmlspecialchars($product['description'] ?? '') ?></textarea>
                 </div>
             </div>
-            <div style="display:flex;gap:12px;margin-top:8px;">
+            <div class="btn-actions" style="margin-top:8px;">
                 <button type="submit" class="btn btn-primary">💾 Сохранить</button>
                 <a href="index.php" class="btn btn-edit">Отмена</a>
                 <a href="delete.php?id=<?= $product_id ?>&t=<?= csrf_token() ?>" class="btn btn-delete" onclick="return confirm('Удалить этот товар?')" style="margin-left:auto;">🗑 Удалить</a>
@@ -172,7 +172,7 @@ require_once '../includes/header.php';
 <!-- ============ ТРЕКИ ============ -->
 <div class="card" style="margin-top:24px;">
     <div class="card-header">
-        <h3>🎵 Треки <span style="color:#666;font-weight:400;font-size:0.9rem;">(<?= count($tracks) ?>)</span></h3>
+        <h3>🎵 Треки <span class="u-muted">(<?= count($tracks) ?>)</span></h3>
     </div>
 
     <?php if ($tracks_flash): ?>
@@ -185,7 +185,7 @@ require_once '../includes/header.php';
 
     <div style="padding: 8px 24px 24px;">
         <?php if (empty($tracks)): ?>
-            <p style="color:#777;margin: 0 0 20px;">Пока ни одного трека. Загрузи ZIP с MP3 — они автоматически распакуются и привяжутся к этому альбому.</p>
+            <p class="u-muted" style="margin: 0 0 20px;">Пока ни одного трека. Загрузи ZIP с MP3 — они автоматически распакуются и привяжутся к этому альбому.</p>
         <?php else: ?>
             <table style="margin-bottom: 24px;">
                 <thead>
@@ -199,7 +199,7 @@ require_once '../includes/header.php';
                 <tbody>
                     <?php foreach ($tracks as $t): ?>
                     <tr>
-                        <td style="color:#888;font-variant-numeric: tabular-nums;">
+                        <td class="u-muted" style="font-variant-numeric: tabular-nums;">
                             <?= str_pad((string)$t['track_number'], 2, '0', STR_PAD_LEFT) ?>
                         </td>
                         <td><?= htmlspecialchars($t['title']) ?></td>
@@ -207,7 +207,7 @@ require_once '../includes/header.php';
                             <?php if (!empty($t['audio_url'])): ?>
                                 <audio controls preload="none" src="<?= htmlspecialchars($t['audio_url']) ?>" style="width:100%;height:32px;"></audio>
                             <?php else: ?>
-                                <span style="color:#666;font-size:0.85rem;">—</span>
+                                <span class="u-muted u-sm">—</span>
                             <?php endif; ?>
                         </td>
                         <td>
@@ -225,17 +225,17 @@ require_once '../includes/header.php';
 
         <!-- Форма загрузки ZIP -->
         <form method="POST" action="upload_tracks.php" enctype="multipart/form-data"
-              style="border:1px dashed #333;border-radius:10px;padding:20px;background:#161616;">
+              class="upload-box">
             <input type="hidden" name="product_id" value="<?= $product_id ?>">
 
             <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:16px;">
                 <div class="form-group" style="flex:1;min-width:260px;margin:0;">
                     <label>ZIP-архив с треками</label>
-                    <input type="file" name="archive" accept=".zip,application/zip,application/x-zip-compressed" required style="color:#aaa;">
+                    <input type="file" name="archive" accept=".zip,application/zip,application/x-zip-compressed" required >
                 </div>
 
                 <div class="form-group" style="margin:0;">
-                    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:400;color:#bbb;">
+                    <label class="u-row" style="cursor:pointer;font-weight:400;">
                         <input type="checkbox" name="replace_existing" value="1" style="width:auto;margin:0;">
                         Удалить старые треки
                     </label>
@@ -244,7 +244,7 @@ require_once '../includes/header.php';
                 <button type="submit" class="btn btn-primary">⬆ Загрузить</button>
             </div>
 
-            <p style="color:#666;font-size:0.82rem;margin: 14px 0 0;line-height:1.5;">
+            <p class="form-hint" style="margin: 14px 0 0;line-height:1.5;">
                 Поддерживаемые форматы: mp3, wav, ogg, m4a, flac, aac.<br>
                 Если в имени файла есть числовой префикс (например <code>01 - Alison.mp3</code>) — он будет использован как номер трека.
                 Иначе треки нумеруются по алфавитному порядку имён.

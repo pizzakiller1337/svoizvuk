@@ -117,29 +117,29 @@ require_once __DIR__ . '/../includes/header.php';
         </thead>
         <tbody>
             <?php if (empty($orders)): ?>
-                <tr><td colspan="8" style="text-align:center;color:#555;padding:40px;">Заказов пока нет</td></tr>
+                <tr><td colspan="8" class="empty-state">Заказов пока нет</td></tr>
             <?php endif; ?>
 
             <?php foreach ($orders as $o): ?>
             <tr>
                 <td>
                     <a href="view.php?id=<?= (int)$o['order_id'] ?>"
-                       style="color:#fff;text-decoration:none;font-family:'Courier New',monospace;font-size:0.85rem;">
+                       class="link-plain u-white u-mono">
                         <?= htmlspecialchars($o['order_number']) ?>
                     </a>
                 </td>
-                <td style="color:#888;font-size:0.85rem;">
+                <td class="u-muted u-sm">
                     <?= date('d.m.Y', strtotime($o['created_at'])) ?>
-                    <div style="color:#555;font-size:0.78rem;">
+                    <div class="u-muted u-xs">
                         <?= date('H:i', strtotime($o['created_at'])) ?>
                     </div>
                 </td>
                 <td>
                     <div><?= htmlspecialchars($o['customer_name']) ?></div>
-                    <div style="color:#666;font-size:0.8rem;"><?= htmlspecialchars($o['customer_email']) ?></div>
+                    <div class="u-muted u-sm"><?= htmlspecialchars($o['customer_email']) ?></div>
                 </td>
                 <td><?= (int)$o['items_count'] ?></td>
-                <td style="font-weight:600;color:#fff;"><?= number_format($o['total'], 0, '', ' ') ?> ₽</td>
+                <td class="u-strong"><?= number_format($o['total'], 0, '', ' ') ?> ₽</td>
                 <td>
                     <span class="badge badge-pay-<?= htmlspecialchars($o['payment_status']) ?>">
                         <?= htmlspecialchars($payment_labels[$o['payment_status']] ?? $o['payment_status']) ?>

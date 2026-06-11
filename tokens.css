@@ -80,6 +80,11 @@
                Roboto, Oxygen, Ubuntu, sans-serif;
   --font-mono: 'Courier New', monospace;  /* номера карт, технические данные */
 
+  /* ---------- Слои (z-index) ---------- */
+  --z-raised:  10;     /* sticky-сайдбары */
+  --z-sticky:  100;    /* липкая навигация */
+  --z-overlay: 1000;   /* оверлеи, модалки */
+
   /* ---------- Прочее ---------- */
   --page-padding: 60px;
 }
