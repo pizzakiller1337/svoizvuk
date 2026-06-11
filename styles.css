@@ -2,7 +2,7 @@
    ПЕРЕМЕННЫЕ вынесены в tokens.css — единый источник
    для сайта и админки. Менять только там.
    ============================================================ */
-@import url("tokens.css?v=5");
+@import url("tokens.css?v=6");
 
 
 /* ============================================================
@@ -1699,6 +1699,14 @@ a.contact-value:hover {
   font-weight: 600;
   color: var(--text-white);
   letter-spacing: 0;
+}
+
+.footer-about {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 320px;
+  margin: 14px 0 0;
 }
 
 /* --- Заголовки колонок --- */

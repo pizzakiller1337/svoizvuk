@@ -117,7 +117,7 @@ $grand_total = $total + $delivery_cost;
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
     <?php require __DIR__ . "/meta_og.php"; ?>
-    <link rel="stylesheet" href="styles.css?v=12">
+    <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
 <?php require 'header.php'; ?>
