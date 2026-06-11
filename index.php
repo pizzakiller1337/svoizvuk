@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/img_helpers.php';
 session_start();
 
 require 'db.php';
@@ -96,8 +97,9 @@ $all_products = mysqli_fetch_all($all_products_result, MYSQLI_ASSOC);
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
+    <?php require __DIR__ . "/meta_og.php"; ?>
     <title>Свой звук</title>
-    <link rel="stylesheet" href="styles.css?v=10">
+    <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body>
 
@@ -148,7 +150,10 @@ $all_products = mysqli_fetch_all($all_products_result, MYSQLI_ASSOC);
                         <div class="products-grid">
                             <?php foreach ($category_data['products'] as $item): ?>
                                 <article class="product-card" data-product-id="<?= (int)$item['product_id'] ?>">
-                                    <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" loading="lazy" decoding="async">
+                                    <picture>
+                                        <?= webp_source($item['image_url']) ?>
+                                        <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" loading="lazy" decoding="async">
+                                    </picture>
                                     <h3 class="album-title"><?= htmlspecialchars($item['title']) ?></h3>
                                     <p class="artist"><?= htmlspecialchars($item['artist']) ?></p>
                                     <div class="hidden-data" style="display:none;">
@@ -173,7 +178,10 @@ $all_products = mysqli_fetch_all($all_products_result, MYSQLI_ASSOC);
                     <?php else: ?>
                         <?php foreach ($all_products as $item): ?>
                             <article class="product-card" data-product-id="<?= (int)$item['product_id'] ?>">
-                                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" loading="lazy" decoding="async">
+                                <picture>
+                                        <?= webp_source($item['image_url']) ?>
+                                        <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" loading="lazy" decoding="async">
+                                    </picture>
                                 <h3 class="album-title"><?= htmlspecialchars($item['title']) ?></h3>
                                 <p class="artist"><?= htmlspecialchars($item['artist']) ?></p>
                                 <div class="hidden-data" style="display:none;">
@@ -238,7 +246,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             data.forEach(item => {
                                 resultsBox.innerHTML += `
                                     <article class="product-card">
-                                        <img src="${item.image_url}" alt="${item.title}" loading="lazy" decoding="async">
+                                        <picture>
+                                            ${item.image_webp ? `<source srcset="${item.image_webp}" type="image/webp">` : ''}
+                                            <img src="${item.image_url}" alt="${item.title}" loading="lazy" decoding="async">
+                                        </picture>
                                         <h3 class="album-title">${item.title}</h3>
                                         <p class="artist">${item.artist}</p>
                                         <div class="hidden-data" style="display:none;">
@@ -397,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const hidden = card.querySelector('.hidden-data');
                 const d = {
-                    imgSrc:      card.querySelector('img').src,
+                    imgSrc:      (card.querySelector('img').currentSrc || card.querySelector('img').src),
                     title:       card.querySelector('.album-title')?.textContent.trim() || '—',
                     artist:      card.querySelector('.artist')?.textContent.trim()      || '—',
                     price:       hidden?.querySelector('.price')?.textContent.trim()    || '—',

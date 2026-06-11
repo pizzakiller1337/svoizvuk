@@ -64,6 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $filename = time() . '_' . uniqid() . '.' . $ext;
             if (move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $filename)) {
                 $image_url = '/assets/images/' . $filename;
+                // WebP-копия для <picture> (не критично при неудаче)
+                require_once __DIR__ . '/../includes/webp.php';
+                make_webp_copy($upload_dir . $filename);
             }
         }
 

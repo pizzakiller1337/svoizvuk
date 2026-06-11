@@ -71,7 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=10">
+    <?php require __DIR__ . "/meta_og.php"; ?>
+    <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body>
 <?php require 'header.php'; ?>

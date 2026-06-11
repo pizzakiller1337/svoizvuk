@@ -2,7 +2,7 @@
    ПЕРЕМЕННЫЕ вынесены в tokens.css — единый источник
    для сайта и админки. Менять только там.
    ============================================================ */
-@import url("tokens.css?v=3");
+@import url("tokens.css?v=4");
 
 
 /* ============================================================
@@ -52,7 +52,7 @@ main {
   color: var(--text-secondary);
   border-bottom: 1px solid var(--border-subtle);
   padding: 6px 0;
-  font-size: 0.82rem;
+  font-size: var(--fs-sm);
 }
 
 .top-bar .container {
@@ -112,7 +112,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
 }
 
 .login-btn {
@@ -154,7 +154,7 @@ main {
 .site-title {
   display: flex;
   align-items: center;
-  font-size: 1.6rem;
+  font-size: var(--fs-xl);
   font-weight: 700;
   line-height: 1;
   color: var(--text-white);
@@ -164,7 +164,7 @@ main {
 @media (max-width: 600px) {
   .main-header { padding: 9px 0; }
   .logo-icon { width: 52px; height: 52px; }
-  .site-title { font-size: 1.35rem; }
+  .site-title { font-size: var(--fs-lg); }
 }
 
 /* Адаптив хедера */
@@ -266,7 +266,7 @@ main {
   background: rgba(255, 255, 255, 0.06);
   color: var(--text-primary);
   border-radius: var(--radius-lg);
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   font-weight: 500;
   text-decoration: none;
   border: 1px solid var(--border-light);
@@ -340,7 +340,7 @@ main {
   border-radius: var(--radius-lg);
   border: 1px solid transparent;
   width: 250px;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   font-weight: 500;
   color: var(--text-white);
   transition: all var(--motion-fast);
@@ -438,7 +438,7 @@ main {
 
 
 .sidebar-inner h3 {
-  font-size: 1.35rem;
+  font-size: var(--fs-lg);
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 1.4rem;
@@ -468,7 +468,7 @@ main {
 }
 
 .artist-big {
-  font-size: 1.25rem;
+  font-size: var(--fs-lg);
   font-weight: 500;
   font-style: italic;
   color: var(--text-secondary);
@@ -477,7 +477,7 @@ main {
 }
 
 .price-big {
-  font-size: 1.65rem;
+  font-size: var(--fs-xl);
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.015em;
@@ -490,7 +490,7 @@ main {
   border-radius: var(--radius-sm);
   padding: 1rem 1.2rem;
   margin: 1rem 0 1.4rem;
-  font-size: 0.96rem;
+  font-size: var(--fs-base);
   line-height: 1.55;
   color: var(--text-secondary);
 }
@@ -508,7 +508,7 @@ main {
 
 .placeholder {
   color: var(--text-muted);
-  font-size: 1rem;
+  font-size: var(--fs-base);
   line-height: 1.6;
   text-align: center;
   padding: 4rem 1.2rem;
@@ -528,7 +528,7 @@ main {
   color: var(--text-white);
   text-decoration: none;
   border-radius: 0;
-  font-size: 0.9rem;
+  font-size: var(--fs-base);
   font-weight: 600;
   letter-spacing: 0.04em;
   text-align: center;
@@ -576,14 +576,14 @@ main {
 }
 
 .product-card .album-title {
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   font-weight: 600;
   margin: 0.4rem 0 0.3rem;
   line-height: 1.3;
 }
 
 .product-card .artist {
-  font-size: 0.92rem;
+  font-size: var(--fs-base);
   color: var(--text-secondary);
   font-style: italic;
   margin: 0;
@@ -604,7 +604,7 @@ main {
   grid-column: 1 / -1;
   text-align: center;
   color: var(--text-primary);
-  font-size: 1rem;
+  font-size: var(--fs-base);
   padding: 30px;
 }
 
@@ -612,7 +612,7 @@ main {
 .section-title {
   position: relative;
   text-align: left;
-  font-size: 1.5rem;
+  font-size: var(--fs-xl);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -661,7 +661,7 @@ main {
 }
 
 .about-hero-title {
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-size: var(--fs-hero);
   font-weight: 800;
   color: var(--text-white);
   line-height: 1.05;
@@ -672,7 +672,7 @@ main {
 
 
 .about-hero-sub {
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   color: var(--text-secondary);
   line-height: 1.7;
   margin: 0 auto;
@@ -733,7 +733,7 @@ main {
 }
 
 .stat-label {
-  font-size: 0.72rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--text-muted);
@@ -772,7 +772,7 @@ main {
 /* ===== Заголовок + текст внутри карточки — единые для всех ===== */
 .tile-title,
 .feature-title {
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   font-weight: 600;
   color: var(--text-white);
   margin: 0 0 10px;
@@ -781,7 +781,7 @@ main {
 
 .tile-text,
 .feature-text {
-  font-size: 0.92rem;
+  font-size: var(--fs-base);
   color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
@@ -815,7 +815,7 @@ main {
 }
 
 .contact-sub {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--text-secondary);
   line-height: 1.6;
   margin: 0 0 28px;
@@ -845,7 +845,7 @@ main {
 .contact-row:last-child  { border-bottom: none; padding-bottom: 0; }
 
 .contact-label {
-  font-size: 0.7rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--text-muted);
@@ -853,7 +853,7 @@ main {
 }
 
 .contact-value {
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   color: var(--text-white);
   text-decoration: none;
   transition: color var(--motion-fast);
@@ -895,7 +895,7 @@ a.contact-value:hover {
   display: inline-block;
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   margin-bottom: 30px;
   transition: color var(--transition);
   letter-spacing: 0.02em;
@@ -958,7 +958,7 @@ a.contact-value:hover {
 }
 
 .tracklist h3 {
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   margin-bottom: 18px;
   color: var(--text-muted);
   text-align: left;
@@ -995,7 +995,7 @@ a.contact-value:hover {
   content: counter(track-counter, decimal-leading-zero);
   font-weight: 500;
   color: var(--text-muted);
-  font-size: 0.8rem;
+  font-size: var(--fs-sm);
   text-align: left;
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.05em;
@@ -1016,7 +1016,7 @@ a.contact-value:hover {
 .track-title {
   color: var(--text-primary);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   overflow-wrap: break-word;
   line-height: 1.4;
 }
@@ -1039,7 +1039,6 @@ a.contact-value:hover {
   width: 32px;
   height: 32px;
   cursor: pointer;
-  font-size: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1081,7 +1080,7 @@ a.contact-value:hover {
 }
 
 .album-eyebrow {
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--text-muted);
@@ -1090,7 +1089,7 @@ a.contact-value:hover {
 }
 
 .album-info h2 {
-  font-size: 2.6rem;
+  font-size: var(--fs-2xl);
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 8px;
@@ -1099,7 +1098,7 @@ a.contact-value:hover {
 }
 
 .album-info .artist {
-  font-size: 1.25rem;
+  font-size: var(--fs-lg);
   color: var(--text-secondary);
   font-style: normal;
   margin-bottom: 32px;
@@ -1118,7 +1117,7 @@ a.contact-value:hover {
 }
 
 .price-label {
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--text-muted);
@@ -1126,7 +1125,7 @@ a.contact-value:hover {
 }
 
 .price-value {
-  font-size: 2rem;
+  font-size: var(--fs-2xl);
   font-weight: 700;
   color: var(--text-white);
   letter-spacing: -0.015em;
@@ -1171,7 +1170,7 @@ a.contact-value:hover {
 }
 
 .info-label {
-  font-size: 0.7rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--text-muted);
@@ -1179,7 +1178,7 @@ a.contact-value:hover {
 }
 
 .info-value {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--text-white);
   font-weight: 500;
   word-break: break-word;
@@ -1193,7 +1192,7 @@ a.contact-value:hover {
 }
 
 .description h3 {
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   margin-bottom: 14px;
@@ -1206,7 +1205,7 @@ a.contact-value:hover {
 .description p {
   line-height: 1.75;
   color: var(--text-primary);
-  font-size: 1rem;
+  font-size: var(--fs-base);
 }
 
 /* Адаптив страницы продукта */
@@ -1222,10 +1221,10 @@ a.contact-value:hover {
     width: 100%;
   }
   .album-info h2 {
-    font-size: 2rem;
+    font-size: var(--fs-2xl);
   }
   .price-value {
-    font-size: 1.7rem;
+    font-size: var(--fs-xl);
   }
 }
 
@@ -1237,7 +1236,7 @@ a.contact-value:hover {
     grid-template-columns: 1fr;
   }
   .album-info h2 {
-    font-size: 1.7rem;
+    font-size: var(--fs-xl);
   }
   .btn-buy {
     max-width: none;
@@ -1273,7 +1272,7 @@ a.contact-value:hover {
 
 .auth-switch {
   margin: 22px 0 0;
-  font-size: 0.9rem;
+  font-size: var(--fs-base);
   color: var(--text-secondary);
 }
 
@@ -1309,7 +1308,7 @@ a.contact-value:hover {
   width: 100%;
   padding: 13px 16px;
   border-radius: var(--radius-sm);
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--text-white);
@@ -1406,7 +1405,7 @@ a.contact-value:hover {
 }
 
 .cart-item-title {
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   font-weight: 600;
   color: var(--text-white);
   text-decoration: none;
@@ -1419,12 +1418,12 @@ a.contact-value:hover {
 }
 
 .cart-item-artist {
-  font-size: 0.9rem;
+  font-size: var(--fs-base);
   color: var(--text-secondary);
 }
 
 .cart-item-price-unit {
-  font-size: 0.8rem;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   margin-top: 2px;
 }
@@ -1434,7 +1433,7 @@ a.contact-value:hover {
 }
 
 .cart-item-subtotal {
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   font-weight: 700;
   color: var(--text-white);
   white-space: nowrap;
@@ -1451,7 +1450,7 @@ a.contact-value:hover {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-light);
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1473,7 +1472,7 @@ a.contact-value:hover {
   color: var(--text-white);
   text-align: center;
   border-radius: var(--radius-sm);
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   transition: all var(--transition);
 }
 
@@ -1497,7 +1496,7 @@ a.contact-value:hover {
 }
 
 .cart-summary-title {
-  font-size: 0.78rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--text-muted);
@@ -1511,14 +1510,14 @@ a.contact-value:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.92rem;
+  font-size: var(--fs-base);
   color: var(--text-secondary);
   margin-bottom: 12px;
 }
 
 .cart-summary-muted {
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
 }
 
 .cart-summary-total {
@@ -1528,20 +1527,20 @@ a.contact-value:hover {
   margin-top: 18px;
   padding-top: 18px;
   border-top: 1px solid var(--border-subtle);
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--text-white);
   font-weight: 600;
 }
 
 .cart-summary-amount {
-  font-size: 1.6rem;
+  font-size: var(--fs-xl);
   font-weight: 700;
   letter-spacing: -0.015em;
   font-variant-numeric: tabular-nums;
 }
 
 .cart-summary-hint {
-  font-size: 0.8rem;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   margin: 14px 0 0;
   padding: 10px 12px;
@@ -1561,7 +1560,7 @@ a.contact-value:hover {
   display: block;
   text-align: center;
   margin-top: 16px;
-  font-size: 0.88rem;
+  font-size: var(--fs-sm);
   color: var(--text-secondary);
   text-decoration: none;
   transition: color var(--motion-fast);
@@ -1581,14 +1580,14 @@ a.contact-value:hover {
 }
 
 .cart-empty-title {
-  font-size: 1.4rem;
+  font-size: var(--fs-lg);
   font-weight: 600;
   color: var(--text-white);
   margin: 0 0 8px;
 }
 
 .cart-empty-sub {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--text-secondary);
   margin: 0 0 28px;
   max-width: 380px;
@@ -1696,14 +1695,14 @@ a.contact-value:hover {
 }
 
 .footer-logo-text {
-  font-size: 1.4rem;
+  font-size: var(--fs-lg);
   font-weight: 700;
   color: var(--text-white);
   letter-spacing: -0.015em;
 }
 
 .footer-tagline {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--text-secondary);
   line-height: 1.5;
   max-width: 280px;
@@ -1711,7 +1710,7 @@ a.contact-value:hover {
 }
 
 .footer-tagline-sub {
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   font-style: italic;
   margin: 0;
@@ -1719,7 +1718,7 @@ a.contact-value:hover {
 
 /* --- Заголовки колонок --- */
 .footer-heading {
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -1740,7 +1739,7 @@ a.contact-value:hover {
 }
 
 .footer-links li {
-  font-size: 0.9rem;
+  font-size: var(--fs-base);
   line-height: 1.4;
 }
 
@@ -1764,7 +1763,7 @@ a.contact-value:hover {
 }
 
 .footer-contact-label {
-  font-size: 0.7rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-muted);
@@ -1773,7 +1772,7 @@ a.contact-value:hover {
 
 .footer-contact-list a,
 .footer-contact-list span:not(.footer-contact-label) {
-  font-size: 0.92rem;
+  font-size: var(--fs-base);
   color: var(--text-primary);
 }
 
@@ -1821,13 +1820,13 @@ a.contact-value:hover {
 }
 
 .footer-copy {
-  font-size: 0.82rem;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   margin: 0;
 }
 
 .footer-meta {
-  font-size: 0.82rem;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   margin: 0;
   display: flex;
@@ -1926,7 +1925,7 @@ a.contact-value:hover {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--text-muted);
   position: relative;
 }
@@ -1948,7 +1947,7 @@ a.contact-value:hover {
   border-radius: 50%;
   border: 1px solid var(--border-medium);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: var(--fs-base);
 }
 
 .checkout-steps li.active {
@@ -1995,7 +1994,7 @@ a.contact-value:hover {
 }
 
 .checkout-block-title {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -2019,7 +2018,7 @@ a.contact-value:hover {
   display: block;
   margin-top: 6px;
   color: var(--danger);
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
 }
 
 textarea.form-input {
@@ -2083,13 +2082,13 @@ textarea.form-input {
 
 .delivery-desc,
 .payment-desc {
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   margin-bottom: 8px;
 }
 
 .delivery-price {
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--text-secondary);
   font-weight: 600;
 }
@@ -2109,7 +2108,7 @@ textarea.form-input {
 }
 
 .summary-title {
-  font-size: 0.78rem;
+  font-size: var(--fs-xs);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -2158,7 +2157,7 @@ textarea.form-input {
 }
 
 .summary-item-title {
-  font-size: 0.92rem;
+  font-size: var(--fs-base);
   font-weight: 600;
   color: var(--text-white);
   white-space: nowrap;
@@ -2169,13 +2168,13 @@ textarea.form-input {
 .summary-item-meta {
   display: flex;
   justify-content: space-between;
-  font-size: 0.8rem;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   margin-top: 2px;
 }
 
 .summary-item-price {
-  font-size: 0.92rem;
+  font-size: var(--fs-base);
   font-weight: 600;
   color: var(--text-secondary);
   white-space: nowrap;
@@ -2192,12 +2191,12 @@ textarea.form-input {
 .summary-row {
   display: flex;
   justify-content: space-between;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   color: var(--text-secondary);
 }
 
 .summary-row.summary-total {
-  font-size: 1.15rem;
+  font-size: var(--fs-md);
   font-weight: 700;
   color: var(--text-white);
   margin-top: 8px;
@@ -2206,7 +2205,7 @@ textarea.form-input {
 }
 
 .summary-recipient {
-  font-size: 0.9rem;
+  font-size: var(--fs-base);
   padding: 14px 0;
   border-top: 1px solid var(--border-subtle);
   margin-top: 8px;
@@ -2215,7 +2214,7 @@ textarea.form-input {
 .summary-recipient-title {
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   color: var(--text-muted);
   margin-bottom: 6px;
 }
@@ -2238,7 +2237,7 @@ textarea.form-input {
   margin-top: 14px;
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: var(--fs-base);
   transition: color var(--transition);
 }
 
@@ -2248,7 +2247,7 @@ textarea.form-input {
 
 .payment-hint {
   margin-top: 12px;
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
   line-height: 1.5;
 }
@@ -2304,11 +2303,11 @@ textarea.form-input {
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
 }
 
 .card-mock-number {
-  font-size: 1.35rem;
+  font-size: var(--fs-lg);
   font-family: 'Courier New', monospace;
   letter-spacing: 0.1em;
   margin-bottom: 22px;
@@ -2323,7 +2322,7 @@ textarea.form-input {
 }
 
 .card-mock-label {
-  font-size: 0.65rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-muted);
@@ -2332,7 +2331,7 @@ textarea.form-input {
 
 .card-mock-value {
   font-family: 'Courier New', monospace;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   letter-spacing: 0.05em;
 }
 
@@ -2442,7 +2441,7 @@ textarea.form-input {
 }
 
 .payment-overlay-text {
-  font-size: 1.15rem;
+  font-size: var(--fs-md);
   font-weight: 600;
   color: var(--text-white);
   margin-bottom: 6px;
@@ -2450,7 +2449,7 @@ textarea.form-input {
 }
 
 .payment-overlay-sub {
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   color: var(--text-muted);
 }
 
@@ -2474,14 +2473,14 @@ textarea.form-input {
 }
 
 .success-title {
-  font-size: 2rem;
+  font-size: var(--fs-2xl);
   font-weight: 700;
   color: var(--text-white);
   margin-bottom: 10px;
 }
 
 .success-subtitle {
-  font-size: 1rem;
+  font-size: var(--fs-base);
   color: var(--text-secondary);
   margin-bottom: 30px;
 }
@@ -2508,7 +2507,7 @@ textarea.form-input {
 }
 
 .order-card-label {
-  font-size: 0.75rem;
+  font-size: var(--fs-xs);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-muted);
@@ -2517,7 +2516,7 @@ textarea.form-input {
 
 .order-number {
   font-family: 'Courier New', monospace;
-  font-size: 1.25rem;
+  font-size: var(--fs-lg);
   font-weight: 700;
   color: var(--text-white);
   letter-spacing: 0.05em;
@@ -2532,7 +2531,7 @@ textarea.form-input {
 }
 
 .order-block h4 {
-  font-size: 0.8rem;
+  font-size: var(--fs-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-muted);
@@ -2547,7 +2546,7 @@ textarea.form-input {
 
 .order-block .muted {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: var(--fs-base);
 }
 
 .order-items {
@@ -2611,7 +2610,7 @@ textarea.form-input {
     gap: 12px;
   }
   .checkout-steps li {
-    font-size: 0.85rem;
+    font-size: var(--fs-sm);
   }
   .checkout-steps li:not(:last-child)::after {
     display: none;
@@ -2632,7 +2631,7 @@ textarea.form-input {
     padding: 20px;
   }
   .card-mock-number {
-    font-size: 1.1rem;
+    font-size: var(--fs-md);
   }
 }
 
@@ -2655,7 +2654,7 @@ textarea.form-input {
 
 
 @media (max-width: 600px) {
-  .section-title { font-size: 1.15rem; }
+  .section-title { font-size: var(--fs-md); }
 }
 
 
@@ -2859,10 +2858,10 @@ iframe {
     margin-top: 22px;
   }
   .product-card .album-title {
-    font-size: 0.95rem;
+    font-size: var(--fs-base);
   }
   .product-card .artist {
-    font-size: 0.82rem;
+    font-size: var(--fs-sm);
   }
   .product-card img {
     margin-bottom: 10px;
@@ -2891,7 +2890,7 @@ iframe {
   /* Шаги оформления (1-Данные · 2-Оплата · 3-Готово) в столбик не нужны,
      но уменьшаем, чтобы влезали в одну строку */
   .checkout-steps li {
-    font-size: 0.78rem;
+    font-size: var(--fs-xs);
   }
 }
 
@@ -2950,7 +2949,7 @@ body > .container,
   border: none;
   background: rgba(255, 255, 255, 0.06);
   color: var(--text-secondary);
-  font-size: 1.4rem;
+  font-size: var(--fs-lg);
   line-height: 1;
   border-radius: 50%;
   cursor: pointer;
@@ -2987,7 +2986,7 @@ body > .container,
 }
 
 .inline-detail-title {
-  font-size: 1.05rem;
+  font-size: var(--fs-md);
   font-weight: 700;
   color: var(--text-white);
   line-height: 1.25;
@@ -2996,14 +2995,14 @@ body > .container,
 }
 
 .inline-detail-artist {
-  font-size: 0.9rem;
+  font-size: var(--fs-base);
   font-style: italic;
   color: var(--text-secondary);
   margin: 0 0 6px;
 }
 
 .inline-detail-price {
-  font-size: 1.2rem;
+  font-size: var(--fs-md);
   font-weight: 700;
   color: var(--text-white);
   margin: 0 0 10px;
@@ -3013,7 +3012,7 @@ body > .container,
   display: flex;
   flex-direction: column;
   gap: 3px;
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
   color: var(--text-secondary);
   margin-bottom: 14px;
 }
@@ -3243,7 +3242,7 @@ body > .container,
   padding: 14px 28px;
   min-height: 44px;                 /* тач-таргет */
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: var(--fs-base);
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -3324,7 +3323,7 @@ body > .container,
 .btn-sm {
   padding: 9px 16px;
   min-height: 36px;
-  font-size: 0.85rem;
+  font-size: var(--fs-sm);
 }
 
 .btn-block {
@@ -3339,7 +3338,7 @@ body > .container,
   margin-bottom: 20px;
   text-align: center;
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: var(--fs-base);
 }
 
 .alert-error {
@@ -3356,7 +3355,7 @@ body > .container,
 
 /* ---------- Заголовок страницы: один стиль на весь сайт ---------- */
 .page-title {
-  font-size: 2rem;
+  font-size: var(--fs-2xl);
   font-weight: 700;
   color: var(--text-white);
   letter-spacing: -0.015em;
@@ -3364,7 +3363,7 @@ body > .container,
 }
 
 @media (max-width: 600px) {
-  .page-title { font-size: 1.6rem; margin-bottom: 24px; }
+  .page-title { font-size: var(--fs-xl); margin-bottom: 24px; }
 }
 
 /* ---------- Дисплейный шрифт для заголовков ---------- */
@@ -3378,10 +3377,10 @@ body > .container,
   font-weight: 600;           /* 700 у Unbounded слишком тяжёлый */
 }
 
-.site-title { font-size: 1.35rem; }   /* шрифт шире — размер чуть меньше */
+.site-title { font-size: var(--fs-lg); }   /* шрифт шире — размер чуть меньше */
 
 @media (max-width: 600px) {
-  .site-title { font-size: 1.15rem; }
+  .site-title { font-size: var(--fs-md); }
 }
 
 /* ---------- Табличные цифры: цены не «пляшут» по ширине ---------- */
@@ -3393,4 +3392,70 @@ body > .container,
 .cart-item-subtotal,
 .cart-summary-amount {
   font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Тёплый акцент: цены и активное прослушивание ---------- */
+.price,
+.price-big,
+.price-value,
+.inline-detail-price,
+.cart-summary-amount {
+  color: var(--accent-warm);
+}
+
+.play-btn:hover {
+  color: var(--accent-warm);
+  border-color: var(--accent-warm);
+}
+
+/* ============================================================
+   ВИНИЛ ЗА ОБЛОЖКОЙ (страница товара)
+   Пока играет любой трек — из-за обложки выезжает чёрный диск
+   и медленно вращается. Класс .is-playing ставит JS.
+   ============================================================ */
+.album-cover::before {
+  content: "";
+  position: absolute;
+  top: 4%;
+  right: 2%;
+  width: 92%;
+  height: 92%;
+  border-radius: 50%;
+  background:
+    /* блик, делающий вращение видимым */
+    conic-gradient(rgba(255, 255, 255, 0.08) 0deg, transparent 70deg,
+                   transparent 180deg, rgba(255, 255, 255, 0.04) 250deg, transparent 320deg),
+    /* яблоко по центру */
+    radial-gradient(circle at center, #2a2a2a 13%, transparent 13.5%),
+    /* бороздки */
+    repeating-radial-gradient(circle at center,
+      #0a0a0a 0, #0a0a0a 2px, #1a1a1a 2px, #1a1a1a 4px);
+  box-shadow: var(--shadow-2);
+  opacity: 0;
+  transition: right 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.cover-img {
+  position: relative;
+  z-index: 1;
+}
+
+.album-cover.is-playing::before {
+  right: -30%;
+  opacity: 1;
+  animation: vinyl-spin 3.5s linear infinite;
+}
+
+@keyframes vinyl-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .album-cover.is-playing::before { animation: none; }
+}
+
+/* На узких экранах диску некуда выезжать — прячем */
+@media (max-width: 768px) {
+  .album-cover.is-playing::before { right: 2%; opacity: 0; }
 }

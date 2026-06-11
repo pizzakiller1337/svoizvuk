@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/img_helpers.php';
 session_start();
 
 require 'db.php';
@@ -24,6 +25,11 @@ $stmt_tracks = mysqli_prepare($link, "SELECT title, audio_url FROM tracklist WHE
 mysqli_stmt_bind_param($stmt_tracks, "i", $product_id);
 mysqli_stmt_execute($stmt_tracks);
 $tracks = mysqli_fetch_all(mysqli_stmt_get_result($stmt_tracks), MYSQLI_ASSOC);
+
+// OG-превью: название пластинки + обложка
+$og_title       = $product['title'] . ' — ' . $product['artist'];
+$og_description = 'Послушайте пластинку до покупки в «Свой звук». ' . (int)$product['price'] . ' ₽, доставка по России.';
+$og_image       = 'https://www.svoizvuk.online/' . ltrim($product['image_url'], '/');
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -39,7 +45,8 @@ $tracks = mysqli_fetch_all(mysqli_stmt_get_result($stmt_tracks), MYSQLI_ASSOC);
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=10">
+    <?php require __DIR__ . "/meta_og.php"; ?>
+    <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body>
 <?php require 'header.php'; ?>
@@ -51,8 +58,11 @@ $tracks = mysqli_fetch_all(mysqli_stmt_get_result($stmt_tracks), MYSQLI_ASSOC);
             <!-- ЛЕВАЯ КОЛОНКА: обложка + треклист -->
             <div class="detail-left">
                 <div class="album-cover">
-                    <img src="<?= htmlspecialchars($product['image_url']) ?>"
-                         alt="<?= htmlspecialchars($product['title']) ?>" class="cover-img">
+                    <picture>
+                        <?= webp_source($product['image_url']) ?>
+                        <img src="<?= htmlspecialchars($product['image_url']) ?>"
+                             alt="<?= htmlspecialchars($product['title']) ?>" class="cover-img">
+                    </picture>
                 </div>
 
                 <div class="tracklist">
@@ -150,6 +160,26 @@ document.addEventListener('click', function(e) {
 
     audio.play().catch(() => {});
 }, false);
+
+// Винил за обложкой: крутится, пока играет любой трек.
+// Заодно ставим на паузу остальные треки при старте нового.
+const albumCover = document.querySelector('.album-cover');
+
+document.addEventListener('play', function(e) {
+    if (!e.target.matches('audio.track-audio')) return;
+    document.querySelectorAll('audio.track-audio').forEach(a => {
+        if (a !== e.target) a.pause();
+    });
+    albumCover && albumCover.classList.add('is-playing');
+}, true);
+
+function stopSpinIfSilent() {
+    const playing = [...document.querySelectorAll('audio.track-audio')]
+        .some(a => !a.paused && !a.ended);
+    if (!playing) albumCover && albumCover.classList.remove('is-playing');
+}
+document.addEventListener('pause', stopSpinIfSilent, true);
+document.addEventListener('ended', stopSpinIfSilent, true);
 </script>
 </body>
 </html>

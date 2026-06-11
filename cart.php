@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/img_helpers.php';
 session_start();
 require 'db.php';
 $link = get_db();
@@ -58,7 +59,8 @@ if (!empty($_SESSION['cart'])) {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="styles.css?v=10">
+    <?php require __DIR__ . "/meta_og.php"; ?>
+    <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body>
 <?php require 'header.php'; ?>
@@ -80,7 +82,10 @@ if (!empty($_SESSION['cart'])) {
                     <?php foreach ($cart_items as $item): $p = $item['product']; ?>
                     <div class="cart-item">
                         <a href="product.php?id=<?= (int)$p['product_id'] ?>" class="cart-item-cover">
-                            <img src="<?= htmlspecialchars($p['image_url']) ?>" alt="<?= htmlspecialchars($p['title']) ?>">
+                            <picture>
+                                <?= webp_source($p['image_url']) ?>
+                                <img src="<?= htmlspecialchars($p['image_url']) ?>" alt="<?= htmlspecialchars($p['title']) ?>">
+                            </picture>
                         </a>
 
                         <div class="cart-item-info">

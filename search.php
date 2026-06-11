@@ -22,5 +22,13 @@ $result = mysqli_query($link, "
 
 $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+// WebP-версия обложки, если сконвертирована
+require_once __DIR__ . '/img_helpers.php';
+foreach ($products as &$p) {
+    $webp = preg_replace('/\.(jpe?g|png)$/i', '.webp', $p['image_url']);
+    $p['image_webp'] = ($webp !== $p['image_url'] && is_file(__DIR__ . '/' . ltrim($webp, '/'))) ? $webp : null;
+}
+unset($p);
+
 header('Content-Type: application/json');
 echo json_encode($products);
