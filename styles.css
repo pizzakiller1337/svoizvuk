@@ -2,7 +2,7 @@
    ПЕРЕМЕННЫЕ вынесены в tokens.css — единый источник
    для сайта и админки. Менять только там.
    ============================================================ */
-@import url("tokens.css?v=2");
+@import url("tokens.css?v=3");
 
 
 /* ============================================================
@@ -3365,4 +3365,32 @@ body > .container,
 
 @media (max-width: 600px) {
   .page-title { font-size: 1.6rem; margin-bottom: 24px; }
+}
+
+/* ---------- Дисплейный шрифт для заголовков ---------- */
+.site-title,
+.page-title,
+.about-hero-title,
+.contact-title,
+.success-title {
+  font-family: var(--font-display);
+  letter-spacing: 0;          /* Unbounded сам по себе широкий */
+  font-weight: 600;           /* 700 у Unbounded слишком тяжёлый */
+}
+
+.site-title { font-size: 1.35rem; }   /* шрифт шире — размер чуть меньше */
+
+@media (max-width: 600px) {
+  .site-title { font-size: 1.15rem; }
+}
+
+/* ---------- Табличные цифры: цены не «пляшут» по ширине ---------- */
+.price,
+.price-big,
+.price-value,
+.inline-detail-price,
+.cart-item-price-unit,
+.cart-item-subtotal,
+.cart-summary-amount {
+  font-variant-numeric: tabular-nums;
 }

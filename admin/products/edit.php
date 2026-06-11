@@ -97,7 +97,7 @@ require_once '../includes/header.php';
     <div class="card-header">
         <h3>Редактирование товара #<?= $product_id ?></h3>
         <div class="u-row">
-            <a href="../../product.php?id=<?= $product_id ?>" target="_blank" class="btn btn-edit btn-sm">👁 На сайте</a>
+            <a href="../../product.php?id=<?= $product_id ?>" target="_blank" class="btn btn-edit btn-sm"><?= admin_icon('eye', 15) ?> На сайте</a>
             <a href="index.php" class="btn btn-edit btn-sm">← Список</a>
         </div>
     </div>
@@ -108,7 +108,7 @@ require_once '../includes/header.php';
             <?php if ($product['image_url']): ?>
                 <img src="<?= htmlspecialchars($product['image_url']) ?>" class="img-preview" alt="">
             <?php else: ?>
-                <div class="img-preview-ph">🎵</div>
+                <div class="img-preview-ph"><?= admin_icon('music-notes', 48) ?></div>
             <?php endif; ?>
         </div>
 
@@ -161,9 +161,9 @@ require_once '../includes/header.php';
                 </div>
             </div>
             <div class="btn-actions" style="margin-top:8px;">
-                <button type="submit" class="btn btn-primary">💾 Сохранить</button>
+                <button type="submit" class="btn btn-primary"><?= admin_icon('floppy-disk', 16) ?> Сохранить</button>
                 <a href="index.php" class="btn btn-edit">Отмена</a>
-                <a href="delete.php?id=<?= $product_id ?>&t=<?= csrf_token() ?>" class="btn btn-delete" onclick="return confirm('Удалить этот товар?')" style="margin-left:auto;">🗑 Удалить</a>
+                <a href="delete.php?id=<?= $product_id ?>&t=<?= csrf_token() ?>" class="btn btn-delete" onclick="return confirm('Удалить этот товар?')" style="margin-left:auto;"><?= admin_icon('trash', 16) ?> Удалить</a>
             </div>
         </form>
     </div>
@@ -172,7 +172,7 @@ require_once '../includes/header.php';
 <!-- ============ ТРЕКИ ============ -->
 <div class="card" style="margin-top:24px;">
     <div class="card-header">
-        <h3>🎵 Треки <span class="u-muted">(<?= count($tracks) ?>)</span></h3>
+        <h3><?= admin_icon('music-notes', 16) ?> Треки <span class="u-muted">(<?= count($tracks) ?>)</span></h3>
     </div>
 
     <?php if ($tracks_flash): ?>

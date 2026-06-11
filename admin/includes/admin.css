@@ -2,7 +2,7 @@
    АДМИН-ПАНЕЛЬ — общие стили
    Цвета/радиусы/тени — только через токены (tokens.css).
    ============================================================ */
-@import url("/tokens.css?v=2");
+@import url("/tokens.css?v=3");
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-sans); }
 body { background: var(--surface-0); color: var(--text-primary); min-height: 100vh; display: flex; flex-direction: column; }
@@ -95,6 +95,7 @@ th {
 td {
     padding: 14px 16px; border-bottom: 1px solid var(--border-subtle);
     font-size: 0.9rem; color: var(--text-primary); vertical-align: middle;
+    font-variant-numeric: tabular-nums;
 }
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: var(--surface-3); }
@@ -354,3 +355,8 @@ img { max-width: 100%; }
     padding: 20px;
     background: var(--surface-1);
 }
+
+/* ---------- SVG-иконки (Phosphor) ---------- */
+.icon svg { display: block; }
+h3 svg, .btn svg { vertical-align: -2px; }
+.img-preview-ph svg { opacity: 0.45; }

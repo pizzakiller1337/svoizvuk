@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="/tokens.css?v=2">
+    <link rel="stylesheet" href="/tokens.css?v=3">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-sans); }
         body { background: var(--surface-0); color: var(--text-primary); min-height: 100vh; display: flex; align-items: center; justify-content: center; }

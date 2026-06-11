@@ -94,7 +94,7 @@ require_once __DIR__ . '/../includes/header.php';
     </select>
     <button type="submit" class="btn btn-edit">Найти</button>
     <?php if ($search || $status): ?>
-        <a href="index.php" class="btn btn-edit">✕ Сбросить</a>
+        <a href="index.php" class="btn btn-edit"><?= admin_icon('x', 14) ?> Сбросить</a>
     <?php endif; ?>
 </form>
 

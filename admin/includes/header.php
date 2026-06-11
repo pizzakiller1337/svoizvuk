@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/icons.php';
 // Считаем количество "новых" заказов для бейджа в сайдбаре.
 // Если таблицы нет или у неё старая схема — просто не показываем бейдж.
 $new_orders_badge = 0;
@@ -27,7 +28,7 @@ if (isset($link) && $link) {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="/admin/includes/admin.css?v=3">
+    <link rel="stylesheet" href="/admin/includes/admin.css?v=4">
 </head>
 <body>
 <div class="admin-layout">
@@ -41,14 +42,14 @@ if (isset($link) && $link) {
                 <div class="nav-section-title">Главное</div>
                 <a href="/admin/index.php"
                    class="nav-item <?= ($current_page ?? '') === 'dashboard' ? 'active' : '' ?>">
-                    <span class="icon"></span> Дашборд
+                    <span class="icon"><?= admin_icon('gauge') ?></span> Дашборд
                 </a>
             </div>
             <div class="nav-section">
                 <div class="nav-section-title">Продажи</div>
                 <a href="/admin/orders/index.php"
                    class="nav-item <?= ($current_page ?? '') === 'orders' ? 'active' : '' ?>">
-                    <span class="icon"></span> Заказы
+                    <span class="icon"><?= admin_icon('package') ?></span> Заказы
                     <?php if ($new_orders_badge > 0): ?>
                         <span class="nav-badge"><?= $new_orders_badge ?></span>
                     <?php endif; ?>
@@ -58,17 +59,17 @@ if (isset($link) && $link) {
                 <div class="nav-section-title">Каталог</div>
                 <a href="/admin/products/index.php"
                    class="nav-item <?= ($current_page ?? '') === 'products' ? 'active' : '' ?>">
-                    <span class="icon"></span> Пластинки
+                    <span class="icon"><?= admin_icon('vinyl-record') ?></span> Пластинки
                 </a>
                 <a href="/admin/products/add.php"
                    class="nav-item <?= ($current_page ?? '') === 'add_product' ? 'active' : '' ?>">
-                    <span class="icon"></span> Добавить пластинку
+                    <span class="icon"><?= admin_icon('plus-circle') ?></span> Добавить пластинку
                 </a>
             </div>
             <div class="nav-section">
                 <div class="nav-section-title">Сайт</div>
                 <a href="/" class="nav-item" target="_blank">
-                    <span class="icon"></span> Открыть сайт
+                    <span class="icon"><?= admin_icon('arrow-square-out') ?></span> Открыть сайт
                 </a>
             </div>
         </nav>

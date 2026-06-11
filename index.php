@@ -97,7 +97,7 @@ $all_products = mysqli_fetch_all($all_products_result, MYSQLI_ASSOC);
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
     <title>Свой звук</title>
-    <link rel="stylesheet" href="styles.css?v=9">
+    <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body>
 
@@ -148,7 +148,7 @@ $all_products = mysqli_fetch_all($all_products_result, MYSQLI_ASSOC);
                         <div class="products-grid">
                             <?php foreach ($category_data['products'] as $item): ?>
                                 <article class="product-card" data-product-id="<?= (int)$item['product_id'] ?>">
-                                    <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                                    <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" loading="lazy" decoding="async">
                                     <h3 class="album-title"><?= htmlspecialchars($item['title']) ?></h3>
                                     <p class="artist"><?= htmlspecialchars($item['artist']) ?></p>
                                     <div class="hidden-data" style="display:none;">
@@ -173,7 +173,7 @@ $all_products = mysqli_fetch_all($all_products_result, MYSQLI_ASSOC);
                     <?php else: ?>
                         <?php foreach ($all_products as $item): ?>
                             <article class="product-card" data-product-id="<?= (int)$item['product_id'] ?>">
-                                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>">
+                                <img src="<?= htmlspecialchars($item['image_url']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" loading="lazy" decoding="async">
                                 <h3 class="album-title"><?= htmlspecialchars($item['title']) ?></h3>
                                 <p class="artist"><?= htmlspecialchars($item['artist']) ?></p>
                                 <div class="hidden-data" style="display:none;">
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             data.forEach(item => {
                                 resultsBox.innerHTML += `
                                     <article class="product-card">
-                                        <img src="${item.image_url}" alt="${item.title}">
+                                        <img src="${item.image_url}" alt="${item.title}" loading="lazy" decoding="async">
                                         <h3 class="album-title">${item.title}</h3>
                                         <p class="artist">${item.artist}</p>
                                         <div class="hidden-data" style="display:none;">

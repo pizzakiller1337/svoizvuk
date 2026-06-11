@@ -53,7 +53,7 @@ require_once __DIR__ . '/../includes/header.php';
            value="<?= htmlspecialchars($search) ?>">
     <button type="submit" class="btn btn-edit">Найти</button>
     <?php if ($search): ?>
-        <a href="index.php" class="btn btn-edit">✕ Сбросить</a>
+        <a href="index.php" class="btn btn-edit"><?= admin_icon('x', 14) ?> Сбросить</a>
     <?php endif; ?>
 </form>
 
