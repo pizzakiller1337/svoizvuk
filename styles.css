@@ -1042,7 +1042,6 @@ a.contact-value:hover {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding-left: 2px;
   transition: all var(--motion-fast);
 }
 
@@ -1707,6 +1706,8 @@ a.contact-value:hover {
   line-height: 1.6;
   max-width: 320px;
   margin: 14px 0 0;
+  text-align: justify;
+  text-wrap: pretty;
 }
 
 /* --- Заголовки колонок --- */
@@ -3111,6 +3112,11 @@ body > .container,
 .placeholder-eq span:nth-child(3) { animation-delay: 80ms;  }
 .placeholder-eq span:nth-child(4) { animation-delay: 340ms; }
 .placeholder-eq span:nth-child(5) { animation-delay: 140ms; }
+
+@keyframes eq-pulse {
+  0%, 100% { transform: scaleY(0.25); }
+  50%      { transform: scaleY(1); }
+}
 
 /* --- Каскадное появление содержимого выбранного альбома ---
    Каждый элемент въезжает чуть позже предыдущего, с лёгким

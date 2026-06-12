@@ -45,7 +45,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (11,'classical'),(10,'folk'),(8,'hip-hop'),(6,'post-punk'),(7,'shoegaze'),(9,'soul/funk'),(4,'Инди/Альтернатива'),(1,'Интересный выбор'),(2,'Новинки'),(3,'Популярное'),(5,'Электро');
+INSERT INTO `categories` VALUES (4,'Инди/Альтернатива'),(1,'Интересный выбор'),(11,'Классика'),(2,'Новинки'),(3,'Популярное'),(6,'Пост-панк'),(9,'Соул/фанк'),(10,'Фолк'),(8,'Хип-хоп'),(7,'Шугейз'),(5,'Электро');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,4 +235,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-12  0:30:14
+-- Dump completed on 2026-06-12 19:35:46

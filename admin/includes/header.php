@@ -3,6 +3,20 @@ require_once __DIR__ . '/icons.php';
 // Считаем количество "новых" заказов для бейджа в сайдбаре.
 // Если таблицы нет или у неё старая схема — просто не показываем бейдж.
 $new_orders_badge = 0;
+
+// Имя админа для приветствия и кнопки выхода. Если в сессии его нет
+// (старый вход), берём из БД по admin_id и кэшируем; иначе — «админ».
+$admin_display = $_SESSION['admin_name'] ?? '';
+if ($admin_display === '' && !empty($_SESSION['admin_id']) && isset($link) && $link) {
+    $r = @mysqli_query($link, "SELECT username FROM users WHERE user_id = " . (int)$_SESSION['admin_id']);
+    if ($r && ($row = mysqli_fetch_assoc($r)) && $row['username'] !== '') {
+        $admin_display = $row['username'];
+        $_SESSION['admin_name'] = $admin_display;
+    }
+}
+if ($admin_display === '') {
+    $admin_display = 'админ';
+}
 if (isset($link) && $link) {
     try {
         $res = @mysqli_query($link, "SELECT COUNT(*) AS cnt FROM orders WHERE status = 'new'");
@@ -28,7 +42,7 @@ if (isset($link) && $link) {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
-    <link rel="stylesheet" href="/admin/includes/admin.css?v=5">
+    <link rel="stylesheet" href="/admin/includes/admin.css?v=6">
 </head>
 <body>
 <div class="admin-layout">
@@ -74,13 +88,13 @@ if (isset($link) && $link) {
             </div>
         </nav>
         <div class="sidebar-footer">
-            <a href="/admin/logout.php">Выйти (<?= htmlspecialchars($_SESSION['admin_name'] ?? '') ?>)</a>
+            <a href="/admin/logout.php">Выйти</a>
         </div>
     </aside>
 
     <div class="main-content">
         <div class="topbar">
             <div class="topbar-title"><?= htmlspecialchars($page_title ?? 'Панель управления') ?></div>
-            <div class="topbar-user">Привет, <?= htmlspecialchars($_SESSION['admin_name'] ?? '') ?></div>
+            <div class="topbar-user">Привет, <?= htmlspecialchars($admin_display) ?></div>
         </div>
         <div class="content">
