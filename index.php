@@ -99,7 +99,7 @@ $all_products = mysqli_fetch_all($all_products_result, MYSQLI_ASSOC);
     <meta name="theme-color" content="#171717">
     <?php require __DIR__ . "/meta_og.php"; ?>
     <title>Свой звук</title>
-    <link rel="stylesheet" href="styles.css?v=13">
+    <link rel="stylesheet" href="styles.css?v=14">
 </head>
 <body>
 

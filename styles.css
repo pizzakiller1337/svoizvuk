@@ -3458,3 +3458,140 @@ body > .container,
 @media (max-width: 768px) {
   .album-cover.is-playing::before { right: 2%; opacity: 0; }
 }
+
+/* ============================================================
+   МЕНЮ ПОЛЬЗОВАТЕЛЯ (выпадающее, в топ-баре)
+   На <details> — работает без JS; скрипт лишь закрывает по
+   клику вне и Esc. Прогрессивное улучшение.
+   ============================================================ */
+.user-menu { position: relative; }
+
+.user-menu-trigger {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-primary);
+  font-size: var(--fs-sm);
+  user-select: none;
+}
+.user-menu-trigger::-webkit-details-marker { display: none; }
+.user-menu-trigger::marker { content: ""; }
+.user-menu-chev { opacity: 0.7; transition: transform var(--motion-fast); }
+.user-menu[open] .user-menu-chev { transform: rotate(180deg); }
+
+.user-menu-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  min-width: 210px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-2);
+  padding: 6px;
+  z-index: var(--z-overlay);
+  animation: userMenuIn 0.14s ease;
+}
+@keyframes userMenuIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.user-menu-head {
+  padding: 8px 12px 10px;
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  line-height: 1.5;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 6px;
+}
+.user-menu-head strong { color: var(--text-white); font-weight: 600; }
+
+.user-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  transition: background var(--motion-fast), color var(--motion-fast);
+}
+.user-menu-item:hover { background: var(--surface-3); color: var(--text-white); }
+.user-menu-item--danger:hover { color: var(--danger); }
+
+.user-menu-badge {
+  background: var(--surface-4);
+  color: var(--text-primary);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+.user-menu-sep { height: 1px; background: var(--border-subtle); margin: 6px 0; }
+
+
+/* ============================================================
+   СТРАНИЦА «МОИ ЗАКАЗЫ»
+   ============================================================ */
+.orders-page { padding: 40px 30px 80px; max-width: 880px; margin: 0 auto; width: 100%; }
+
+.orders-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+.orders-empty p { margin: 0 0 22px; font-size: var(--fs-md); }
+
+.orders-list { display: flex; flex-direction: column; gap: 22px; }
+
+.order-head-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.order-card-date { font-size: var(--fs-sm); color: var(--text-muted); }
+
+.order-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.order-status-new        { background: rgba(109, 183, 255, 0.12); color: #6db7ff; }
+.order-status-processing { background: rgba(255, 209, 102, 0.12); color: #ffd166; }
+.order-status-shipped    { background: rgba(94, 234, 212, 0.12);  color: #5eead4; }
+.order-status-delivered  { background: var(--success-bg); color: var(--success); }
+.order-status-cancelled  { background: var(--danger-bg);  color: var(--danger); }
+
+.order-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-subtle);
+}
+.order-foot-meta { font-size: var(--fs-sm); color: var(--text-muted); }
+.order-foot-total { font-size: var(--fs-sm); color: var(--text-secondary); }
+.order-foot-total strong {
+  color: var(--text-white);
+  font-size: var(--fs-md);
+  margin-left: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 600px) {
+  .orders-page { padding: 24px 18px 60px; }
+}
+

@@ -21,8 +21,20 @@ $site_title_tag = $is_home_page ? 'h1' : 'p';
                 <span class="cart-count"><?= $cart_count ?></span>
             </a>
             <?php if ($is_logged_in): ?>
-                <span class="top-link" style="opacity:0.6;"><?= htmlspecialchars($username) ?></span>
-                <a href="logout.php" class="login-btn">Выйти</a>
+                <details class="user-menu">
+                    <summary class="user-menu-trigger">
+                        <span class="user-menu-name"><?= htmlspecialchars($username) ?></span>
+                        <svg class="user-menu-chev" width="11" height="11" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                    </summary>
+                    <div class="user-menu-dropdown">
+                        <div class="user-menu-head">Вы вошли как<br><strong><?= htmlspecialchars($username) ?></strong></div>
+                        <a href="orders.php" class="user-menu-item">Мои заказы</a>
+                        <a href="cart.php" class="user-menu-item">Корзина<span class="user-menu-badge"><?= $cart_count ?></span></a>
+                        <a href="about.php" class="user-menu-item">О магазине</a>
+                        <div class="user-menu-sep"></div>
+                        <a href="logout.php" class="user-menu-item user-menu-item--danger">Выйти</a>
+                    </div>
+                </details>
             <?php else: ?>
                 <a href="login.php" class="login-btn">Войти</a>
             <?php endif; ?>

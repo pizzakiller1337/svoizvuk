@@ -93,3 +93,17 @@
         </p>
     </div>
 </footer>
+
+<script>
+// Меню пользователя на <details>: закрываем по клику вне и по Esc.
+(function () {
+    var menu = document.querySelector('.user-menu');
+    if (!menu) return;
+    document.addEventListener('click', function (e) {
+        if (menu.open && !menu.contains(e.target)) menu.removeAttribute('open');
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && menu.open) menu.removeAttribute('open');
+    });
+})();
+</script>
