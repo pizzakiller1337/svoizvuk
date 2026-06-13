@@ -3596,3 +3596,70 @@ body > .container,
   .orders-page { padding: 24px 18px 60px; }
 }
 
+/* ============================================================
+   ВОЗВРАТ ЗАКАЗА (в «Мои заказы»)
+   ============================================================ */
+.order-return { padding: 0 24px 18px; }
+
+.order-return-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.order-return-requested { background: rgba(255, 209, 102, 0.12); color: #ffd166; }
+.order-return-approved  { background: rgba(94, 234, 212, 0.12);  color: #5eead4; }
+.order-return-rejected  { background: var(--danger-bg);  color: var(--danger); }
+.order-return-refunded  { background: var(--success-bg); color: var(--success); }
+
+.return-box { border-top: 1px dashed var(--border-medium); padding-top: 14px; }
+.return-toggle {
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  user-select: none;
+}
+.return-toggle::-webkit-details-marker { display: none; }
+.return-toggle::marker { content: ""; }
+.return-toggle:hover { color: var(--text-white); }
+.return-box[open] .return-toggle { color: var(--text-white); margin-bottom: 12px; }
+
+.return-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 460px;
+}
+.return-label { font-size: var(--fs-sm); color: var(--text-muted); }
+.return-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  color: var(--text-white);
+  font-size: var(--fs-sm);
+  font-family: inherit;
+  resize: vertical;
+}
+.return-textarea:focus { border-color: var(--border-strong); }
+.return-form .btn { align-self: flex-start; }
+
+.return-note {
+  border-top: 1px dashed var(--border-medium);
+  padding-top: 12px;
+  font-size: var(--fs-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.return-note-label { color: var(--text-secondary); font-weight: 600; }
+.return-note-reason { color: var(--text-muted); }
+

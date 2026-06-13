@@ -20,6 +20,23 @@ $status_labels = [
 ];
 $delivery_labels = ['courier' => 'Курьером', 'post' => 'Почта России', 'pickup' => 'Самовывоз'];
 $payment_labels  = ['card' => 'Картой', 'sbp' => 'СБП', 'cash' => 'При получении'];
+$return_labels = [
+    'requested' => 'Возврат запрошен',
+    'approved'  => 'Возврат одобрен',
+    'rejected'  => 'Возврат отклонён',
+    'refunded'  => 'Деньги возвращены',
+];
+
+// Флеш-сообщение после запроса возврата
+$return_flash = '';
+$return_flash_type = 'success';
+switch ($_GET['return'] ?? '') {
+    case 'ok':         $return_flash = 'Заявка на возврат отправлена. Мы свяжемся с вами по эл. почте.'; break;
+    case 'exists':     $return_flash = 'По этому заказу возврат уже оформлен.'; $return_flash_type = 'error'; break;
+    case 'ineligible': $return_flash = 'По отменённому заказу возврат недоступен.'; $return_flash_type = 'error'; break;
+    case 'noreason':   $return_flash = 'Опишите причину возврата подробнее (хотя бы несколько слов).'; $return_flash_type = 'error'; break;
+    case 'notfound':   $return_flash = 'Заказ не найден.'; $return_flash_type = 'error'; break;
+}
 
 // Заказы пользователя
 $stmt = mysqli_prepare($link, "SELECT * FROM orders WHERE user_id = ? ORDER BY created_at DESC");
@@ -52,7 +69,7 @@ if ($orders) {
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
     <?php require __DIR__ . "/meta_og.php"; ?>
-    <link rel="stylesheet" href="styles.css?v=15">
+    <link rel="stylesheet" href="styles.css?v=16">
 </head>
 <body>
 <?php require 'header.php'; ?>
@@ -60,6 +77,12 @@ if ($orders) {
 <main class="orders-page">
     <div class="container">
         <h1 class="page-title">Мои заказы</h1>
+
+        <?php if ($return_flash): ?>
+            <div class="alert alert-<?= $return_flash_type === 'success' ? 'success' : 'error' ?>">
+                <?= htmlspecialchars($return_flash) ?>
+            </div>
+        <?php endif; ?>
 
         <?php if (!$orders): ?>
             <div class="orders-empty">
@@ -69,8 +92,11 @@ if ($orders) {
         <?php else: ?>
             <div class="orders-list">
                 <?php foreach ($orders as $o): ?>
-                    <?php $items = $items_by_order[$o['order_id']] ?? []; ?>
-                    <article class="order-card">
+                    <?php
+                        $items   = $items_by_order[$o['order_id']] ?? [];
+                        $rstatus = $o['return_status'] ?? 'none';
+                    ?>
+                    <article class="order-card" id="order-<?= (int) $o['order_id'] ?>">
                         <div class="order-card-header">
                             <div>
                                 <div class="order-card-label">Заказ</div>
@@ -80,6 +106,11 @@ if ($orders) {
                                 <span class="order-status order-status-<?= htmlspecialchars($o['status']) ?>">
                                     <?= htmlspecialchars($status_labels[$o['status']] ?? $o['status']) ?>
                                 </span>
+                                <?php if ($rstatus !== 'none'): ?>
+                                    <span class="order-return-badge order-return-<?= htmlspecialchars($rstatus) ?>">
+                                        <?= htmlspecialchars($return_labels[$rstatus] ?? $rstatus) ?>
+                                    </span>
+                                <?php endif; ?>
                                 <div class="order-card-date"><?= date('d.m.Y', strtotime($o['created_at'])) ?></div>
                             </div>
                         </div>
@@ -114,6 +145,31 @@ if ($orders) {
                             <span class="order-foot-total">
                                 Итого <strong><?= number_format($o['total'], 0, '', ' ') ?> ₽</strong>
                             </span>
+                        </div>
+
+                        <div class="order-return">
+                            <?php if ($rstatus === 'none' && $o['status'] !== 'cancelled'): ?>
+                                <details class="return-box">
+                                    <summary class="return-toggle">Оформить возврат</summary>
+                                    <form method="POST" action="request_return.php" class="return-form">
+                                        <input type="hidden" name="order_id" value="<?= (int) $o['order_id'] ?>">
+                                        <label class="return-label" for="reason-<?= (int) $o['order_id'] ?>">
+                                            Расскажите, что не так — мы рассмотрим заявку и ответим на почту.
+                                        </label>
+                                        <textarea id="reason-<?= (int) $o['order_id'] ?>" name="reason"
+                                                  class="return-textarea" rows="3"
+                                                  placeholder="Например: пришла с царапиной на стороне B" required></textarea>
+                                        <button type="submit" class="btn btn-secondary btn-sm">Отправить заявку</button>
+                                    </form>
+                                </details>
+                            <?php elseif ($rstatus !== 'none'): ?>
+                                <div class="return-note">
+                                    <span class="return-note-label"><?= htmlspecialchars($return_labels[$rstatus] ?? $rstatus) ?></span>
+                                    <?php if (!empty($o['return_reason'])): ?>
+                                        <span class="return-note-reason">«<?= htmlspecialchars($o['return_reason']) ?>»</span>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </article>
                 <?php endforeach; ?>

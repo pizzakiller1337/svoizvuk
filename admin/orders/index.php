@@ -149,6 +149,11 @@ require_once __DIR__ . '/../includes/header.php';
                     <span class="badge badge-status badge-status-<?= htmlspecialchars($o['status']) ?>">
                         <?= htmlspecialchars($status_labels[$o['status']] ?? $o['status']) ?>
                     </span>
+                    <?php if (($o['return_status'] ?? 'none') === 'requested'): ?>
+                        <div style="margin-top:6px;">
+                            <span class="badge badge-status-cancelled">↩ возврат</span>
+                        </div>
+                    <?php endif; ?>
                 </td>
                 <td>
                     <a href="view.php?id=<?= (int)$o['order_id'] ?>" class="btn btn-edit btn-sm">Подробнее</a>

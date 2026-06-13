@@ -43,6 +43,20 @@ $delivery_labels = [
     'post'    => 'Почта России',
     'pickup'  => 'Самовывоз',
 ];
+$return_labels = [
+    'none'      => 'Без возврата',
+    'requested' => 'Запрошен',
+    'approved'  => 'Одобрен',
+    'rejected'  => 'Отклонён',
+    'refunded'  => 'Деньги возвращены',
+];
+// Цвет бейджа возврата — переиспользуем палитру статусов заказа
+$return_badge_class = [
+    'requested' => 'badge-status-processing',
+    'approved'  => 'badge-status-shipped',
+    'rejected'  => 'badge-status-cancelled',
+    'refunded'  => 'badge-status-delivered',
+];
 
 $success = '';
 $error   = '';
@@ -59,6 +73,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
             $success = 'Статус обновлён';
         } else {
             $error = 'Не удалось обновить статус';
+        }
+    }
+}
+
+// Решение по возврату
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_return'])) {
+    $new_return = $_POST['return_status'] ?? '';
+    $allowed_return = ['requested', 'approved', 'rejected', 'refunded'];
+    if (!in_array($new_return, $allowed_return, true)) {
+        $error = 'Некорректный статус возврата';
+    } else {
+        $stmt = mysqli_prepare($link, "UPDATE orders SET return_status = ? WHERE order_id = ?");
+        mysqli_stmt_bind_param($stmt, 'si', $new_return, $order_id);
+        if (mysqli_stmt_execute($stmt)) {
+            $success = 'Статус возврата обновлён';
+        } else {
+            $error = 'Не удалось обновить возврат';
         }
     }
 }
@@ -261,6 +292,44 @@ require_once __DIR__ . '/../includes/header.php';
                 </button>
             </form>
         </div>
+
+        <?php $ret = $order['return_status'] ?? 'none'; ?>
+        <?php if ($ret !== 'none'): ?>
+            <div class="status-form">
+                <h4>Возврат</h4>
+
+                <div class="status-current">
+                    <span class="badge badge-status <?= $return_badge_class[$ret] ?? '' ?>">
+                        <?= htmlspecialchars($return_labels[$ret] ?? $ret) ?>
+                    </span>
+                </div>
+
+                <?php if (!empty($order['return_requested_at'])): ?>
+                    <div class="u-muted u-sm" style="margin-bottom:10px;">
+                        Запрошен: <?= date('d.m.Y H:i', strtotime($order['return_requested_at'])) ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (!empty($order['return_reason'])): ?>
+                    <div class="note-box" style="margin-bottom:12px;">
+                        <?= nl2br(htmlspecialchars($order['return_reason'])) ?>
+                    </div>
+                <?php endif; ?>
+
+                <form method="POST">
+                    <select name="return_status">
+                        <?php foreach (['requested', 'approved', 'rejected', 'refunded'] as $k): ?>
+                            <option value="<?= $k ?>" <?= $ret === $k ? 'selected' : '' ?>>
+                                <?= $return_labels[$k] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <button type="submit" name="update_return" class="btn btn-primary">
+                        Сохранить
+                    </button>
+                </form>
+            </div>
+        <?php endif; ?>
 
         <div class="status-form">
             <h4>Контакты покупателя</h4>
