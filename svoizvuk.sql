@@ -69,7 +69,7 @@ CREATE TABLE `order_items` (
   PRIMARY KEY (`item_id`),
   KEY `idx_items_order` (`order_id`),
   CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`order_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,7 +78,7 @@ CREATE TABLE `order_items` (
 
 LOCK TABLES `order_items` WRITE;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
-INSERT INTO `order_items` VALUES (1,1,4,'Grace','Jeff Buckley','/assets/images/jeff_buckley.jpg',4300.00,1,4300.00),(2,2,5,'Slowdive','Slowdive','/assets/images/slowdive.jpg',3600.00,1,3600.00),(3,3,3,'Daydream Nation','Sonic Youth','/assets/images/sonic_youth.jpg',2900.00,1,2900.00),(4,4,4,'Grace','Jeff Buckley','/assets/images/jeff_buckley.jpg',4300.00,4,17200.00),(5,4,15,'Souvlaki','Slowdive ','/assets/images/souvlaki.jpg',2900.00,3,8700.00),(6,5,15,'Souvlaki','Slowdive ','/assets/images/souvlaki.jpg',2900.00,1,2900.00),(7,6,4,'Grace','Jeff Buckley','/assets/images/jeff_buckley.jpg',4300.00,1,4300.00),(8,7,3,'Daydream Nation','Sonic Youth','/assets/images/sonic_youth.jpg',2900.00,2,5800.00);
+INSERT INTO `order_items` VALUES (1,1,4,'Grace','Jeff Buckley','/assets/images/jeff_buckley.jpg',4300.00,1,4300.00),(2,2,5,'Slowdive','Slowdive','/assets/images/slowdive.jpg',3600.00,1,3600.00),(3,3,3,'Daydream Nation','Sonic Youth','/assets/images/sonic_youth.jpg',2900.00,1,2900.00),(4,4,4,'Grace','Jeff Buckley','/assets/images/jeff_buckley.jpg',4300.00,4,17200.00),(5,4,15,'Souvlaki','Slowdive ','/assets/images/souvlaki.jpg',2900.00,3,8700.00),(6,5,15,'Souvlaki','Slowdive ','/assets/images/souvlaki.jpg',2900.00,1,2900.00),(7,6,4,'Grace','Jeff Buckley','/assets/images/jeff_buckley.jpg',4300.00,1,4300.00),(8,7,3,'Daydream Nation','Sonic Youth','/assets/images/sonic_youth.jpg',2900.00,2,5800.00),(9,8,10,'OK Computer','Radiohead','/assets/images/OKComputer.jpg',4100.00,1,4100.00);
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +115,7 @@ CREATE TABLE `orders` (
   KEY `idx_orders_status` (`status`),
   KEY `idx_orders_created` (`created_at`),
   KEY `idx_orders_user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'SZ-20260508-80A37',NULL,'sonic2012','vitalikwert25@gmail.com','+7 (937) 952-95-99','post','123','123','123',0.00,'123','cash',NULL,'pending',4300.00,4300.00,'delivered','2026-05-08 22:22:43','2026-05-08 22:23:28'),(2,'SZ-20260516-6F87B',5,'admin','admin@svoizvuk.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','cash',NULL,'pending',3600.00,3600.00,'delivered','2026-05-16 12:37:22','2026-05-27 19:22:53'),(3,'SZ-20260516-E9296',5,'admin','admin@svoizvuk.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','cash',NULL,'pending',2900.00,2900.00,'shipped','2026-05-16 12:58:26','2026-05-27 19:23:00'),(4,'SZ-20260528-7D754',NULL,'тест','vitaly.takmakov@yandex.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','cash',NULL,'pending',25900.00,25900.00,'new','2026-05-28 21:55:39','2026-05-28 21:55:39'),(5,'SZ-20260528-2DBC2',NULL,'Vitaliy Takmakov','vitaly.takmakov@yandex.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','cash',NULL,'pending',2900.00,2900.00,'new','2026-05-28 22:05:35','2026-05-28 22:05:35'),(6,'SZ-20260529-A729C',NULL,'Vitaliy Takmakov','vitaly.takmakov@yandex.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','cash',NULL,'pending',4300.00,4300.00,'new','2026-05-29 00:12:53','2026-05-29 00:12:53'),(7,'SZ-20260610-A0F92',5,'admin','admin@svoizvuk.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','sbp',NULL,'paid',5800.00,5800.00,'new','2026-06-10 23:55:50','2026-06-10 23:55:50');
+INSERT INTO `orders` VALUES (1,'SZ-20260508-80A37',NULL,'sonic2012','vitalikwert25@gmail.com','+7 (937) 952-95-99','post','123','123','123',0.00,'123','cash',NULL,'pending',4300.00,4300.00,'delivered','2026-05-08 22:22:43','2026-05-08 22:23:28'),(2,'SZ-20260516-6F87B',5,'admin','admin@svoizvuk.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','cash',NULL,'pending',3600.00,3600.00,'delivered','2026-05-16 12:37:22','2026-05-27 19:22:53'),(3,'SZ-20260516-E9296',5,'admin','admin@svoizvuk.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','cash',NULL,'pending',2900.00,2900.00,'shipped','2026-05-16 12:58:26','2026-05-27 19:23:00'),(4,'SZ-20260528-7D754',NULL,'тест','vitaly.takmakov@yandex.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','cash',NULL,'pending',25900.00,25900.00,'new','2026-05-28 21:55:39','2026-05-28 21:55:39'),(5,'SZ-20260528-2DBC2',NULL,'Vitaliy Takmakov','vitaly.takmakov@yandex.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','cash',NULL,'pending',2900.00,2900.00,'new','2026-05-28 22:05:35','2026-05-28 22:05:35'),(6,'SZ-20260529-A729C',NULL,'Vitaliy Takmakov','vitaly.takmakov@yandex.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','cash',NULL,'pending',4300.00,4300.00,'new','2026-05-29 00:12:53','2026-05-29 00:12:53'),(7,'SZ-20260610-A0F92',5,'admin','admin@svoizvuk.ru','+7 (937) 952-95-99','pickup','','','',0.00,'','sbp',NULL,'paid',5800.00,5800.00,'new','2026-06-10 23:55:50','2026-06-10 23:55:50'),(8,'SZ-20260613-E6585',7,'Vitaliy','vitaly.takmakov@yandex.ru','+7 (937) 952-95-99','courier','Odintsovo','143006','Komsomolskaya str., 16',0.00,'','card','1111','paid',4100.00,4100.00,'new','2026-06-13 19:25:07','2026-06-13 19:25:07');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,7 +209,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `created_at` date NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,7 +218,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'ggg','1234@123',123,'user','123','2026-01-16'),(2,'1234','12345@123',123,'user','123','2026-01-16'),(3,'123','123456@123',123,'user','123','2026-01-16'),(4,'123','123@123',123,'user','123','2026-01-17'),(5,'admin','admin@svoizvuk.ru',1111,'admin','$2y$10$zCUB2n9CZrBw.o9p3GbgNew3Gh/ESu6xFORf8LGR4btLDl0bwfi32','2026-02-12'),(6,'uexhdsltnh','tjqgsmzl@immenseignite.info',1,'user','qnjstyzjsgzv','2026-06-06');
+INSERT INTO `users` VALUES (1,'ggg','1234@123',123,'user','$2y$10$bhk1C6IA2kmtwI2OQv2eV.7ZZRXj5TTCzuqFtZX9GxE2scTz081Qq','2026-01-16'),(2,'1234','12345@123',123,'user','$2y$10$POEeaX21FQm63x0PIq7TaemLPVwArpIORjlnvtVcoYlQZJqnaxbYu','2026-01-16'),(3,'123','123456@123',123,'user','$2y$10$n5qQAHjby72u39b3.htF..G2dnrs8hCwGvw28wy/K5oDbuSkLVJ96','2026-01-16'),(4,'123','123@123',123,'user','$2y$10$XEZVIKGgzNa6VEQLMzc9xOW2I4RsRqjsiPEoPeOSTjPJooZpN9FBu','2026-01-17'),(5,'admin','admin@svoizvuk.ru',1111,'admin','$2y$10$zCUB2n9CZrBw.o9p3GbgNew3Gh/ESu6xFORf8LGR4btLDl0bwfi32','2026-02-12'),(6,'uexhdsltnh','tjqgsmzl@immenseignite.info',1,'user','$2y$10$vvfQqJSNFsLTlGOBxWUdqOtrtTRH634T5YPhNQC2bb354g4R58dK6','2026-06-06'),(7,'Vitaliy','vitaly.takmakov@yandex.ru',2147483647,'user','$2y$10$jTnOymER1J6VsN52GtjFzezWrLsxhA/ot3pgeXwiZ1BGjuKQsx2Tu','2026-06-13');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50112 SET @disable_bulk_load = IF (@is_rocksdb_supported, 'SET SESSION rocksdb_bulk_load = @old_rocksdb_bulk_load', 'SET @dummy_rocksdb_bulk_load = 0') */;
@@ -235,4 +235,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-06-12 19:35:46
+-- Dump completed on 2026-06-13 20:15:59
