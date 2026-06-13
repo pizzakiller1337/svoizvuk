@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/icons.php';
 $cart_count = array_sum($_SESSION['cart'] ?? []);
 $is_logged_in = isset($_SESSION['user_id']);
 $username = $_SESSION['username'] ?? '';
@@ -17,12 +18,14 @@ $site_title_tag = $is_home_page ? 'h1' : 'p';
         <div class="top-actions">
             <a href="about.php" class="top-link">О магазине</a>
             <a href="cart.php" class="cart-btn">
+                <?= site_icon('cart', 17) ?>
                 Корзина
                 <span class="cart-count"><?= $cart_count ?></span>
             </a>
             <?php if ($is_logged_in): ?>
                 <details class="user-menu">
                     <summary class="user-menu-trigger">
+                        <?= site_icon('user', 15) ?>
                         <span class="user-menu-name"><?= htmlspecialchars($username) ?></span>
                         <svg class="user-menu-chev" width="11" height="11" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
                     </summary>
