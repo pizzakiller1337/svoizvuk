@@ -32,7 +32,7 @@ if ($r) { $stats['genres'] = (int)mysqli_fetch_assoc($r)['c']; }
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#171717">
     <?php require __DIR__ . "/meta_og.php"; ?>
-    <link rel="stylesheet" href="styles.css?v=14">
+    <link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
 <?php require 'header.php'; ?>

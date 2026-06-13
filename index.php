@@ -99,7 +99,7 @@ $all_products = mysqli_fetch_all($all_products_result, MYSQLI_ASSOC);
     <meta name="theme-color" content="#171717">
     <?php require __DIR__ . "/meta_og.php"; ?>
     <title>Свой звук</title>
-    <link rel="stylesheet" href="styles.css?v=14">
+    <link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
 
@@ -314,10 +314,12 @@ document.addEventListener('DOMContentLoaded', () => {
         updateArrows();
     }
 
-    // Раскрытие деталей. На десктопе — в боковой панели.
-    // На телефоне (<=600px) — раскрывающаяся панель прямо под рядом
-    // нажатой карточки (как в iTunes / App Store).
-    const isMobileView = () => window.matchMedia('(max-width: 600px)').matches;
+    // Раскрытие деталей. На десктопе (>1024px) — в боковой панели.
+    // На планшете и телефоне (<=1024px) сайдбар уезжает в столбик вниз
+    // страницы и незаметен, поэтому там раскрываем панель прямо под рядом
+    // нажатой карточки (как в iTunes / App Store). Порог совпадает с CSS,
+    // где .album-sidebar { display:none }.
+    const isMobileView = () => window.matchMedia('(max-width: 1024px)').matches;
 
     function buildSidebarHTML(d) {
         return `
