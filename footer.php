@@ -57,7 +57,7 @@
                 </li>
                 <li>
                     <span class="footer-contact-label">Часы работы</span>
-                    <span>Пн–Вс · 11:00–22:00</span>
+                    <span>Пн–Пт 11–20, Сб 12–18</span>
                 </li>
             </ul>
 
